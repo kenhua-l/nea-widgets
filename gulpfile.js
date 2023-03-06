@@ -7,7 +7,7 @@ const { src, dest, parallel, series, watch } = require('gulp'),
   fileinclude = require('gulp-file-include');
 
 function html() {
-  return src('src/*.html')
+  return src(['src/**/*.html', '!src/partials/**'])
     .pipe(
       fileinclude({
         prefix: '@@',

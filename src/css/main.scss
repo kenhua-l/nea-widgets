@@ -1,24 +1,71 @@
-@import 'partial';
-/* main css file which loads after bootstrap
- * this file is to be changed as desired
- */
-$neon-pink: #F25CA2;
-$medium-blue: #0433BF;
-$blue: #032CA6;
-$dark-blue: #021859;
-$light-blue: #0B9ED9;
-$grey: #efefef;
+$bg-grey: #fafafa;
+$nea-blue: #006fa1;
+$nea-green: #bed73b;
+
 html {
   font-size: 100%; // 1rem is 16px;
 }
 
 body {
   font-size: 1rem;
-  background: $grey;
+  background: $bg-grey;
+}
+
+main {
+  padding: 2rem 0;
+}
+
+.cards-group {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 -0.5rem;
+  .card-container {
+    padding: 0.5rem;
+    flex-basis: 100%;
+    @media (min-width: 576px) {
+      flex-basis: 50%;
+    }
+    @media (min-width: 768px) {
+      flex-basis: 33.333%;
+    }
+  }
+  .card {
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+    color: var(--bs-body-color-rgb);
+    .card-img {
+      overflow: hidden;
+      img {
+        width: 100%;
+        transition: all 0.5s;
+      }
+    }
+    .card-info {
+      padding: 0.5rem 1rem;
+      background: white;
+      transition: all 0.5s;
+      p {
+        margin: 0;
+      }
+    }
+    &:hover {
+      .card-img {
+        img {
+          scale: 1.05;
+        }
+      }
+      .card-info {
+        background: $nea-blue;
+        color: white;
+      }
+    }
+
+  }
 }
 
 .navbar-dark {
-  background: $blue;
+  background: $nea-green;
 }
 .dropdown-menu {
   padding: 0;
@@ -27,19 +74,27 @@ body {
     padding: 0.5rem 1rem;
     &:hover, &:focus {
       color: white;
-      background: $blue;
+      background: $nea-blue;
     }
   }
 }
-main {
-  padding: 2rem 0;
-}
+
 footer {
-  background: $blue;
+  background: $nea-blue;
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  p {
+    display: inline-block;
+  }
   a {
     color: white;
+    display: inline-block;
+    text-align: right;
+    text-decoration: none;
     &:hover {
-      color: $grey;
+      color: $bg-grey;
     }
   }
 }
