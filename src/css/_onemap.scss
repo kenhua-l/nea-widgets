@@ -1,0 +1,123 @@
+#onemap {
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+  .leaflet-control-container {
+    pointer-events: none;
+    * {
+      pointer-events: auto;
+    }
+    > * {
+      max-width: 100%;
+    }
+  }
+  @media (min-width: 1200px) {
+    width: 70%;
+  }
+}
+
+#mapdiv {
+  height: 500px;
+  @media (max-width: 1024px) {
+    .leaflet-map-pane {
+      top: -55px !important;
+    }
+  }
+}
+
+.leaflet-control {
+  z-index: 1;
+}
+
+.leaflet-container {
+  background: #bed3f8;
+  font-size: 16px;
+  font-family: "roboto";
+}
+
+.leaflet-top, .leaflet-bottom {
+  z-index: 80;
+}
+
+.popup-info {
+  background: #ddd;
+  padding: 0;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  display: inline-block;
+  float: none;
+  max-width: 450px;
+  overflow: hidden;
+  @media (max-width: 768px) {
+    max-width: 85vw;
+  }
+}
+
+// dengue cluster tab
+.tab-nav {
+  display: flex;
+  .tab-button {
+    background: none;
+    padding: 0.5rem 1rem;
+    border: 0;
+    &.is-active {
+      background: white;
+      color: $nea-blue;
+    }
+  }
+}
+
+#popup-toggler {
+  display: inline-block;
+  position: relative;
+  margin-left: auto;
+  width: 1.2rem;
+  height: 1.2rem;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem; 
+  &::before, &::after {
+    content: '';
+    background: black;
+    width: 1px;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+  }
+  &::before {
+    transform: rotate(135deg);
+  }
+  &::after {
+    transform: rotate(45deg);
+  }
+}
+
+.tab-item {
+  background: white;
+  padding: 1rem;
+  max-height: 350px;
+  overflow: auto;
+  p {
+    word-break: break-word;
+  }
+  table {
+    font-size: .875rem;
+    th {
+      border-bottom: 1px solid #333;
+      line-height: 1.2;
+    }
+    th, td {
+      padding: 0.5rem;
+      vertical-align: top;
+    }
+    ul {
+      list-style: '- ';
+      padding-left: 0.5rem;
+      li {
+        line-height: 1.2;
+      }
+    }
+  }
+}
+
