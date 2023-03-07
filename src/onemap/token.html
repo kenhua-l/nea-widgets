@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <head>
+    <title>Onemap API</title>
+    @@include('../partials/head.html')
+  </head>
+  <body class="d-flex flex-column h-100">
+    @@include('../partials/header.html')
+    <main>
+      <section aria-label="main content">
+        <div class="container">
+          <h1>Onemap API Token</h1>
+          <p>This page is to retrieve a working token and to demonstrate the available themes usable in Onemap.</p>
+          <p>
+            You can register for a Onemap account <a href="https://developers.onemap.sg/register/" target="_blank">here</a> 
+            and refer to the <a href="https://www.onemap.gov.sg/docs/" target="_blank">documention</a> for more info.
+          </p>
+          <!-- email and password for token -->
+          <form id="getToken">
+            <div class="mb-3 row">
+              <label for="email" class="col-sm-2 col-form-label">Email</label>
+              <div class="col-sm-10">
+                <input type="email" name="email" id="email" class="form-control" placeholder="email@example.com" />
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="password" class="col-sm-2 col-form-label">Password</label>
+              <div class="col-sm-10">
+                <input type="password" name="password" class="form-control" id="password" />
+              </div>
+            </div>
+  
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          <pre id="token" class="api-reponse"></pre>
+          <hr />
+
+          <!-- Query Theme -->
+          <form id="getThemeData">
+            <div class="mb-3 row">
+              <label for="token" class="col-sm-2 col-form-label">Token</label>
+              <div class="col-sm-10">
+                <input type="text" name="token" class="form-control" />
+                <p><small>get access token from above</small></p>
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="queryTheme" class="col-sm-2 col-form-label">Query Theme</label>
+              <div class="col-sm-10">
+                <input type="text" name="queryTheme" class="form-control" />
+                <p>
+                  <small>
+                    Possible values (that we have used) are dengue_cluster, zika_cluster, hawkercentre, secondhandcollecn, cashfortrash, ewaste, lighting, dsa.
+                    For more themes, click <a href="javascript:getAllThemes()">here</a>. (Do not leave the token field empty.)
+                  </small>
+                </p>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          <pre id="json_data" class="api-reponse"></pre>
+          
+        </div>
+      </section>
+    </main>
+    @@include('../partials/footer.html')
+    @@include('../partials/scripts.html')
+    <script>
+      $(function() {
+        $('#getToken').submit(function() {
+          generateToken();
+          return false;
+        });
+
+        $('#getThemeData').submit(function() {
+          getData();
+          return false;
+        });
+      });
+
+      function generateToken(){
+        var email = $('input[name="email"]').val();
+        var pass = $('input[name="password"]').val();
+        var url = 'https://developers.onemap.sg/privateapi/auth/post/getToken';
+        var settings = {
+          'url': url,
+          'data': {
+            'email': email,
+            'password': pass
+          },
+          'async': 'true'
+        }
+
+        $.post(settings).done(function(response) {
+          $('#token').html(JSON.stringify(response));
+        }).fail(function(failure) {
+          $('#token').html(JSON.stringify(failure));
+        });
+      }
+
+      function getData() {
+        var token = $('input[name="token"]').val();
+        var theme = $('input[name="queryTheme"]').val();
+        var url = 'https://developers.onemap.sg/privateapi/themesvc/retrieveTheme';
+        var settings = {
+          'url': url + '?token=' + token + '&queryName=' + theme,
+        }
+
+        $.ajax(settings).done(function (response) {
+          $('#json_data').html(JSON.stringify(response, undefined, 2));
+        }).fail(function(failure) {
+          $('#json_data').html(JSON.stringify(failure));
+        });
+      }
+
+      function getAllThemes() {
+        var token = $('input[name="token"]').val();
+        var url = 'https://developers.onemap.sg/privateapi/themesvc/getAllThemesInfo';
+        var settings = {
+          'url': url + '?token=' + token,
+        }
+
+        $.ajax(settings).done(function (response) {
+          $('#json_data').html(JSON.stringify(response, undefined, 2));
+        }).fail(function(failure) {
+          $('#json_data').html(JSON.stringify(failure));
+        });
+      }
+
+    </script>
+  </body>
+</html>

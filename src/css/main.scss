@@ -23,6 +23,7 @@ main {
   .card-container {
     padding: 0.5rem;
     flex-basis: 100%;
+    display: flex;
     @media (min-width: 576px) {
       flex-basis: 50%;
     }
@@ -32,11 +33,14 @@ main {
   }
   .card {
     overflow: hidden;
-    display: block;
     text-decoration: none;
     color: var(--bs-body-color-rgb);
+    background: white;
+    transition: all 0.5s;
     .card-img {
       overflow: hidden;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
       img {
         width: 100%;
         transition: all 0.5s;
@@ -44,20 +48,19 @@ main {
     }
     .card-info {
       padding: 0.5rem 1rem;
-      background: white;
       transition: all 0.5s;
       p {
         margin: 0;
       }
     }
     &:hover {
+      background: $nea-blue;
       .card-img {
         img {
           scale: 1.05;
         }
       }
       .card-info {
-        background: $nea-blue;
         color: white;
       }
     }
