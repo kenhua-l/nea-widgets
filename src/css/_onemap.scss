@@ -11,6 +11,7 @@
   overflow: hidden;
   .leaflet-control-container {
     pointer-events: none;
+    font-size: 0.8rem;
     * {
       pointer-events: auto;
     }
@@ -192,3 +193,23 @@
     height: auto;
   }
 }
+
+// after death
+hr {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.leaflet-popup-content {
+  font-size: 0.8rem;
+  p {
+    margin: 0 0 1rem;
+  }
+}
+
+.info {
+  max-height: 180px;
+  overflow-y: auto;
+  padding-left: 1rem;
+}
+

@@ -1,0 +1,33 @@
+{
+  "SrchResults": [
+    {
+      "FeatCount": 2,
+      "Theme_Name": "Inland Ash Scattering Gardens",
+      "Category": "Environment",
+      "Owner": "NATIONAL ENVIRONMENT AGENCY",
+      "DateTime": {
+        "date": "2020-12-16 06:16:51.000000",
+        "timezone_type": 1,
+        "timezone": "+00:00"
+      }
+    },
+    {
+      "NAME": "Garden of Peace [Under Construction]",
+      "DESCRIPTION": "Garden of Peace is under construction and will be ready in early 2021. It will be the first ash scattering garden in Singapore offering people of all faiths an additional option for managing cremated human ashes.",
+      "ADDRESSSTREETNAME": "Old Choa Chu Kang Road",
+      "LANDXADDRESSPOINT": "12103.5711",
+      "LANDYADDRESSPOINT": "39335.2217",
+      "LatLng": "1.3720039999951,103.690478000005",
+      "ICON_NAME": "circle.png"
+    },
+    {
+      "NAME": "Garden of Serenity [Ready by 2021]",
+      "DESCRIPTION": "Garden of Serenity, located at the new Mandai Crematorium Complex, will be ready in 2022.",
+      "ADDRESSSTREETNAME": "Mandai Road",
+      "LANDXADDRESSPOINT": "25345.43594",
+      "LANDYADDRESSPOINT": "44081.41094",
+      "LatLng": "1.41493099962424,103.809464999632",
+      "ICON_NAME": "circle.png"
+    }
+  ]
+}

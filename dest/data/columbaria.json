@@ -1,0 +1,79 @@
+{
+  "SrchResults": [
+    {
+      "FeatCount": 6,
+      "Theme_Name": "Dedicated Columbaria",
+      "Category": "Environment",
+      "Owner": "NATIONAL ENVIRONMENT AGENCY",
+      "DateTime": {
+        "date": "2020-04-20 12:50:45.000000",
+        "timezone_type": 1,
+        "timezone": "+00:00"
+      }
+    },
+    {
+      "NAME": "The Garden of Remembrance",
+      "DESCRIPTION": "Private columbarium",
+      "ADDRESSBLOCKHOUSENUMBER": "920",
+      "ADDRESSPOSTALCODE": "699815",
+      "ADDRESSSTREETNAME": "Old Choa Chu Kang Road",
+      "LANDXADDRESSPOINT": "12313.26457",
+      "LANDYADDRESSPOINT": "39598.03558",
+      "LatLng": "1.37438090020455,103.692362100285",
+      "ICON_NAME": "circle.png"
+    },
+    {
+      "NAME": "Nirvana Memorial Garden Singapore",
+      "DESCRIPTION": "Private columbarium",
+      "ADDRESSBLOCKHOUSENUMBER": "950",
+      "ADDRESSPOSTALCODE": "699816",
+      "ADDRESSSTREETNAME": "Old Choa Chu Kang Road",
+      "LANDXADDRESSPOINT": "11842.0244",
+      "LANDYADDRESSPOINT": "39196.2001",
+      "LatLng": "1.37074660000528,103.688127899999",
+      "ICON_NAME": "circle.png"
+    },
+    {
+      "NAME": "Seh Ong Charity",
+      "DESCRIPTION": "Private columbarium",
+      "ADDRESSBLOCKHOUSENUMBER": "560",
+      "ADDRESSPOSTALCODE": "658115",
+      "ADDRESSSTREETNAME": "Bukit Batok Street 23",
+      "LANDXADDRESSPOINT": "19084.65492",
+      "LANDYADDRESSPOINT": "35920.29599",
+      "LatLng": "1.3411236000474,103.753208899825",
+      "ICON_NAME": "circle.png"
+    },
+    {
+      "NAME": "Choa Chu Kang Columbarium",
+      "DESCRIPTION": "Government-Managed Columbaria",
+      "ADDRESSBLOCKHOUSENUMBER": "51",
+      "ADDRESSPOSTALCODE": "698932",
+      "ADDRESSSTREETNAME": "Chinese Cemetery Path 4",
+      "LANDXADDRESSPOINT": "11674.19264",
+      "LANDYADDRESSPOINT": "39591.58329",
+      "LatLng": "1.37432220008578,103.686619599628",
+      "ICON_NAME": "circle.png"
+    },
+    {
+      "NAME": "Mandai Columbarium",
+      "DESCRIPTION": "Government-Managed Columbaria",
+      "ADDRESSBLOCKHOUSENUMBER": "300",
+      "ADDRESSPOSTALCODE": "779393",
+      "ADDRESSSTREETNAME": "Mandai Road",
+      "LANDXADDRESSPOINT": "25364.03064",
+      "LANDYADDRESSPOINT": "43968.70169",
+      "LatLng": "1.41391170006951,103.809632099597",
+      "ICON_NAME": "circle.png"
+    },
+    {
+      "NAME": "Yishun Columbarium",
+      "DESCRIPTION": "Government-Managed Columbaria",
+      "ADDRESSSTREETNAME": "Yishun Ring Road",
+      "LANDXADDRESSPOINT": "28026.57722",
+      "LANDYADDRESSPOINT": "46263.84849",
+      "LatLng": "1.43466830013621,103.833557399816",
+      "ICON_NAME": "circle.png"
+    }
+  ]
+}

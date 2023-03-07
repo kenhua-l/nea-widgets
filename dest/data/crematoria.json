@@ -1,0 +1,59 @@
+{
+  "SrchResults": [
+    {
+      "FeatCount": 4,
+      "Theme_Name": "Crematoria",
+      "Category": "Environment",
+      "Owner": "NATIONAL ENVIRONMENT AGENCY",
+      "DateTime": {
+        "date": "2020-04-19 12:20:44.000000",
+        "timezone_type": 1,
+        "timezone": "+00:00"
+      }
+    },
+    {
+      "NAME": "Kong Meng San Phor Kark See Monastery (Bright Hill Temple)",
+      "DESCRIPTION": "Private crematorium",
+      "ADDRESSBLOCKHOUSENUMBER": "88",
+      "ADDRESSPOSTALCODE": "574117",
+      "ADDRESSSTREETNAME": "Bright Hill Road",
+      "LANDXADDRESSPOINT": "28276.72064",
+      "LANDYADDRESSPOINT": "38173.85451",
+      "LatLng": "1.3615052998927,103.835805099601",
+      "ICON_NAME": "circle.png"
+    },
+    {
+      "NAME": "Tze Tho Aum Temple",
+      "DESCRIPTION": "Private crematorium",
+      "ADDRESSBLOCKHOUSENUMBER": "601",
+      "ADDRESSPOSTALCODE": "575719",
+      "ADDRESSSTREETNAME": "Sin Ming Drive",
+      "LANDXADDRESSPOINT": "28554.21787",
+      "LANDYADDRESSPOINT": "38213.02057",
+      "LatLng": "1.36185950026663,103.838298600236",
+      "ICON_NAME": "circle.png"
+    },
+    {
+      "NAME": "Choa Chu Kang Crematorium",
+      "DESCRIPTION": "Government-Managed Crematorium",
+      "ADDRESSBLOCKHOUSENUMBER": "960",
+      "ADDRESSPOSTALCODE": "699818",
+      "ADDRESSSTREETNAME": "Old Choa Chu Kang Road",
+      "LANDXADDRESSPOINT": "11714.58713",
+      "LANDYADDRESSPOINT": "39177.52063",
+      "LatLng": "1.37057759968839,103.686982799742",
+      "ICON_NAME": "circle.png"
+    },
+    {
+      "NAME": "Mandai Crematorium",
+      "DESCRIPTION": "Government-Managed Crematorium",
+      "ADDRESSBLOCKHOUSENUMBER": "300",
+      "ADDRESSPOSTALCODE": "779393",
+      "ADDRESSSTREETNAME": "Mandai Road",
+      "LANDXADDRESSPOINT": "25364.03064",
+      "LANDYADDRESSPOINT": "43968.70169",
+      "LatLng": "1.41391170006951,103.809632099597",
+      "ICON_NAME": "circle.png"
+    }
+  ]
+}
