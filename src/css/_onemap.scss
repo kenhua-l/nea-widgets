@@ -162,3 +162,26 @@
     }
   }
 }
+
+// ornsz
+.ornsz {
+  .popup-info {
+    img {
+      height: 180px;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}
+.onemapDetail {
+  background: white;
+  font-size: 0.8rem;
+  box-shadow: 0 3px 14px rgb(0, 0, 0, 0.4);
+  padding: 0.5rem;
+  padding-right: 1.2rem;
+  border-radius: 5px;
+  a.leaflet-popup-close-button {
+    padding: 5px;
+    height: auto;
+  }
+}

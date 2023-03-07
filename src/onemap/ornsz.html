@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <head>
+    <title>Orchard Road Non-Smoking Zone Map</title>
+    @@include('../partials/head.html')
+  </head>
+  <body class="d-flex flex-column h-100">
+    @@include('../partials/header.html')
+    <main>
+      <section aria-label="main content">
+        <div class="container">
+          <h1>Orchard Road Non-Smoking Zone Map</h1>
+          <p>The data shown is a snapshot from 4 March 2023</p>
+          <p>Get your token <a href="/onemap/token.html">here</a>.</p>
+          <div id="onemap">
+            <div id="mapdiv" class="ornsz"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    @@include('../partials/footer.html')
+    @@include('../partials/scripts.html')
+    <script>
+      var point_theme = 'dsa';
+      var zone_theme = 'nsz';
+      var dsa = [];
+      var map;
+      var center = L.bounds([1.30600, 103.83004], [1.30900, 103.83767]).getCenter();
+      
+      function InitiateMap() {
+        map = L.map('mapdiv').setView([center.x, center.y], 15);
+        var popupTemplate = 
+          '<div class="popup-info"><b>{areaName}</b><hr>' +
+          'Description: {areaDescription}<br />' +
+          '{imagePlaceholder}' +
+          '<a href="javascript:void(0)" onClick="navigateMe({latlon})">Navigate</a>' +
+          '</div>';
+
+        var basemap = L.tileLayer('https://maps-{s}.onemap.sg/v3/Original/{z}/{x}/{y}.png', {
+          attribution: 'Map data © contributors, <a href="http://SLA.gov.sg" target="_blank" rel="noopener noreferrer">Singapore Land Authority</a><br>Designated Smoking Area &copy; 2018',
+          maxZoom: 18, 
+          minZoom: 11
+        });
+        attribution = map.attributionControl;
+        attribution.setPrefix('<img src="https://docs.onemap.sg/maps/images/oneMap64-01.png" alt="onemap logo" style="height:20px;width:20px;"/>');
+        
+        basemap.addTo(map);
+        
+        var blueIcon = new L.Icon({
+          iconUrl: '/img/blue-marker.png',
+          iconSize: [25, 41],
+          iconAnchor: [12, 41],
+          popupAnchor: [1, -34],
+        });
+
+        // draw the non-smoking zone first
+        $.getJSON('/data/nsz.json', function (data) {
+          for (var i = 1; i < data.SrchResults.length; i++) {
+            var zone = data.SrchResults[i];
+            var polyConfig = {
+              color: '#bf1f4b',
+              opacity: 1,
+              weight: 1,
+              fill: true,
+              fillColor: '#df879f',
+              fillOpacity: 0.2,
+            }
+            var latlng = zone.LatLng;
+
+            latlng = latlng.split('|');
+            for (var j=0; j < latlng.length; j++){
+              latlng[j] = [parseFloat(latlng[j].split(',')[0]), parseFloat(latlng[j].split(',')[1])];
+            }
+
+            L.polygon([latlng], polyConfig).addTo(map);
+          }
+        });
+
+        // place the designated points next
+        $.get('/data/dsa.json', function (data) {
+          data = JSON.stringify(data);
+          data = JSON.parse(data);
+          for (var i = 1; i < data.SrchResults.length; i++) {
+            var result = data.SrchResults[i];
+            var latlng = data.SrchResults[i].LatLng;
+            var lat = parseFloat(latlng.split(',')[0]);
+            var lng = parseFloat(latlng.split(',')[1]);
+            var marker = new L.marker([lat, lng], { title: result.NAME, icon: blueIcon, alt: 'marker' });
+
+            var updatedPopup = 
+              '<div class="popup-info"><b>' + result.NAME + '</b><hr>' +
+              'Description: ' + result.DESCRIPTION + '<br />' +
+              '{imagePlaceholder}' +
+              '<a href="javascript:void(0)" onClick="navigateMe(\'' + latlng + '\')">Navigate</a>' +
+              '</div>';
+            if (result.PHOTOURL != null) {
+              updatedPopup = updatedPopup.replace('{imagePlaceholder}', '<img src="' + result.PHOTOURL + '" alt="' + result.NAME + ' photo" onerror="javascript:$(this).css(\'display\',\'none\');"/>');
+            } else {
+              updatedPopup = updatedPopup.replace('{imagePlaceholder}', '');
+            }
+            marker.bindPopup(updatedPopup, { maxWidth: 220 }).addTo(map);
+          }
+        });
+      }
+
+      function navigateMe(dest) {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function (pos) {
+            var start = pos.coords.latitude + ',' + pos.coords.longitude;
+            initiateNavigation(start, dest);
+          });
+        } else {
+          x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+      }
+
+      // Navigation
+      function initiateNavigation(start, dest) {
+        let onemapRoutingApiUrl = 'https://developers.onemap.sg/privateapi/routingsvc/route';
+        let routeType = 'walk';
+        let token  = prompt('Please enter the token.', '');
+        $.get(onemapRoutingApiUrl + '?start=' + start + '&end=' + dest + '&routeType=' + routeType + '&token=' + token,  function (data) {
+          data = JSON.stringify(data);
+          data = JSON.parse(data);
+          var latlngs = [];
+          var tempA = data.route_instructions[0][3].split(',');
+          var startPoint = [parseFloat(tempA[0]), parseFloat(tempA[1])];
+          var tempB = data.route_instructions[data.route_instructions.length - 1][3].split(',');
+          var endPoint = [parseFloat(tempB[0]), parseFloat(tempB[1])];
+          var totalDistance = data.route_summary.total_distance;
+          var totalTime = Math.floor(data.route_summary.total_time / 60);
+
+          $.map(data.route_instructions, function (val, key) {
+            var tempVal = val[3].split(',');
+            latlngs.push([parseFloat(tempVal[0]), parseFloat(tempVal[1])]);
+            if (key === (data.route_instructions.length - 1)) {
+              drawNavigation(startPoint, endPoint, latlngs, totalDistance, totalTime);
+            }
+          });
+        });
+      }
+
+      function drawNavigation(startPoint, endPoint, latlngs, totalDistance, totalTime) {
+        map.remove();
+        map = L.map('mapdiv').setView([center.x, center.y], 11);
+
+        var basemap = L.tileLayer('https://maps-{s}.onemap.sg/v3/Original/{z}/{x}/{y}.png', {
+          attribution: 'Map data © contributors, <a href="http://SLA.gov.sg" target="_blank" rel="noopener noreferrer">Singapore Land Authority</a><br>Designated Smoking Area &copy; 2018',
+          maxZoom: 18, 
+          minZoom: 11
+        });
+
+        attribution = map.attributionControl;
+        attribution.setPrefix('<img src="https://docs.onemap.sg/maps/images/oneMap64-01.png" alt="onemap logo" style="height:20px;width:20px;"/>');
+
+        basemap.addTo(map);
+
+        // Draw Line
+        var polyline = L.polyline(latlngs, { color: '#050505', weight: 3, opacity: 1.0, dashArray: "30 10" }).addTo(map);
+        setTimeout(function () {
+          map.fitBounds(polyline.getBounds());
+        }, 500);
+
+        // Drop marker
+        var startIcon = new L.Icon({
+          iconUrl: '/img/start-marker.png',
+          iconSize: [30, 30],
+          iconAnchor: [12, 41],
+          popupAnchor: [1, -34],
+          shadowSize: [41, 41]
+        });
+
+        var endIcon = new L.Icon({
+          iconUrl: '/img/end-marker.png',
+          iconSize: [30, 30],
+          iconAnchor: [12, 41],
+          popupAnchor: [1, -34],
+          shadowSize: [41, 41]
+        });
+
+        var markerStart = new L.marker(startPoint, { title: 'Start', icon: startIcon, alt: 'Start Point' });
+        var markerEnd = new L.marker(endPoint, { title: 'End', icon: endIcon, alt: 'End Point' });
+
+        map.addLayer(markerStart);
+        map.addLayer(markerEnd);
+
+        // Draw details
+        var info = L.control({ position: 'topright', collapsed: true });
+        info.onAdd = function (map) {
+          this._div = L.DomUtil.create('div', 'onemapDetail');
+          this._div.innerHTML =
+            '<span><b>Walk ' + totalDistance + 'm for ' + totalTime + ' minutes</b></span>' +
+            '<a href="#" class="leaflet-popup-close-button" onclick="resetMap()">x</a>';
+          return this._div;
+        };
+        info.addTo(map);
+      }
+
+      function resetMap() {
+        map.remove();
+        InitiateMap();
+      }
+      // End Navigation
+
+      $(function() {
+        InitiateMap();
+      })
+
+    </script>
+  </body>
+</html>

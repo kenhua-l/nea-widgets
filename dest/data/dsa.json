@@ -1,0 +1,474 @@
+{
+  "SrchResults": [
+    {
+      "FeatCount": 51,
+      "Theme_Name": "Designated Smoking Areas",
+      "Category": "Environment",
+      "Owner": "NATIONAL ENVIRONMENT AGENCY",
+      "DateTime": {
+        "date": "2022-09-23 07:33:23.000000",
+        "timezone_type": 1,
+        "timezone": "+00:00"
+      }
+    },
+    {
+      "NAME": "TANG PLAZA",
+      "DESCRIPTION": "Front of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/tang-plaza-(1)",
+      "LANDXADDRESSPOINT": "27892.56335",
+      "LANDYADDRESSPOINT": "31974.22",
+      "LatLng": "1.30543800381267,103.832353210911",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "ORCHARD TOWERS",
+      "DESCRIPTION": "Side of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/orchard-towers-2",
+      "LANDXADDRESSPOINT": "27579.63012",
+      "LANDYADDRESSPOINT": "32181.52369",
+      "LatLng": "1.30731278272593,103.829541355512",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "ORCHARD TOWERS",
+      "DESCRIPTION": "Side of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/orchardtowers",
+      "LANDXADDRESSPOINT": "27518.64397",
+      "LANDYADDRESSPOINT": "32159.71472",
+      "LatLng": "1.30711554892503,103.82899336671",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "CUPPAGE TERRACE",
+      "DESCRIPTION": "Side of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/cuppage-terrace",
+      "LANDXADDRESSPOINT": "28758.48395",
+      "LANDYADDRESSPOINT": "31558.58019",
+      "LatLng": "1.30167909482627,103.840133903864",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "FAR EAST PLAZA",
+      "DESCRIPTION": "Front of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/FEP",
+      "LANDXADDRESSPOINT": "27973.74152",
+      "LANDYADDRESSPOINT": "32137.94634",
+      "LatLng": "1.3069186869495,103.833082634098",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "VOCO ORCHARD SINGAPORE",
+      "DESCRIPTION": "Back of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/hilton-singapore",
+      "LANDXADDRESSPOINT": "27533.02723",
+      "LANDYADDRESSPOINT": "32012.67851",
+      "LatLng": "1.30578580557827,103.829122608813",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "MING ARCADE",
+      "DESCRIPTION": "Front of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/ming-arcade",
+      "LANDXADDRESSPOINT": "27410.365",
+      "LANDYADDRESSPOINT": "32054.375",
+      "LatLng": "1.30616289192772,103.828020430429",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "ION ORCHARD",
+      "DESCRIPTION": "Side of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/ion-orchard--new",
+      "LANDXADDRESSPOINT": "27740.26574",
+      "LANDYADDRESSPOINT": "31835.48447",
+      "LatLng": "1.30418332791933,103.830984745752",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "JEN SINGAPORE TANGLIN",
+      "DESCRIPTION": "Back of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/hotel-jen-tanglin-2",
+      "LANDXADDRESSPOINT": "26990.84748",
+      "LANDYADDRESSPOINT": "31865.14066",
+      "LatLng": "1.30445151275344,103.824250873861",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "HILTON ORCHARD SINGAPORE",
+      "DESCRIPTION": "Back of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/mandarin-gallery-(2)",
+      "LANDXADDRESSPOINT": "28307.81088",
+      "LANDYADDRESSPOINT": "31548.69805",
+      "LatLng": "1.30158973231082,103.836084400438",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "VOCO ORCHARD SINGAPORE",
+      "DESCRIPTION": "Front of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/hilton-singapore-(1)",
+      "LANDXADDRESSPOINT": "27603.37096",
+      "LANDYADDRESSPOINT": "32031.54494",
+      "LatLng": "1.30595642763654,103.829754680719",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "ST. REGIS SINGAPORE",
+      "DESCRIPTION": "Front of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/stregis",
+      "LANDXADDRESSPOINT": "27161.85011",
+      "LANDYADDRESSPOINT": "32009.04093",
+      "LatLng": "1.30575290055784,103.825787407997",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "T GALLERIA BY DFS",
+      "DESCRIPTION": "Front of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/tgalleriabydfs",
+      "LANDXADDRESSPOINT": "27948.30906",
+      "LANDYADDRESSPOINT": "32198.91517",
+      "LatLng": "1.3074700681567,103.832854111807",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "SHAW CENTRE",
+      "DESCRIPTION": "Side of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/shaw-house/shaw-temp-dsa",
+      "LANDXADDRESSPOINT": "27885.379",
+      "LANDYADDRESSPOINT": "32047.9645",
+      "LatLng": "1.30610492305772,103.832288655429",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "FAR EAST SHOPPING CENTRE",
+      "DESCRIPTION": "Side of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/dsa_far-east-shopping-centre",
+      "LANDXADDRESSPOINT": "27659.501",
+      "LANDYADDRESSPOINT": "31953.75951",
+      "LatLng": "1.30525296456136,103.830259036074",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "FOUR SEASONS HOTEL",
+      "DESCRIPTION": "Front of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/four-seasons-hotel-singapore-2",
+      "LANDXADDRESSPOINT": "27450.32706",
+      "LANDYADDRESSPOINT": "31914.5863",
+      "LatLng": "1.3048986929252,103.828379511231",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "FORUM THE SHOPPING MALL",
+      "DESCRIPTION": "Back of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/forum-the-shopping-mall-dsa",
+      "LANDXADDRESSPOINT": "27499.29852",
+      "LANDYADDRESSPOINT": "31998.74388",
+      "LatLng": "1.30565978543736,103.828819540795",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "CATHAY CINELEISURE ORCHARD",
+      "DESCRIPTION": "Side of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/cineleisure-dsa-side-of-building",
+      "LANDXADDRESSPOINT": "28339.686",
+      "LANDYADDRESSPOINT": "31568.681",
+      "LatLng": "1.30177045029155,103.836370812955",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "TANG PLAZA",
+      "DESCRIPTION": "Side of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/tang-plaza",
+      "LANDXADDRESSPOINT": "28039.30391",
+      "LANDYADDRESSPOINT": "31929.32334",
+      "LatLng": "1.3050319740465,103.833671743129",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "TANGLIN MALL",
+      "DESCRIPTION": "Front of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/tanglin-mall",
+      "LANDXADDRESSPOINT": "26935.9649",
+      "LANDYADDRESSPOINT": "31941.96961",
+      "LatLng": "1.30514632440733,103.82375772551",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "TANGLIN PLACE",
+      "DESCRIPTION": "Back of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/tanglin-place",
+      "LANDXADDRESSPOINT": "27063.08093",
+      "LANDYADDRESSPOINT": "31937.22325",
+      "LatLng": "1.30510340465802,103.824899922435",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "TANGLIN SHOPPING CENTRE",
+      "DESCRIPTION": "Back of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/tanglin-shopping-centre",
+      "LANDXADDRESSPOINT": "27324.15468",
+      "LANDYADDRESSPOINT": "32069.8259",
+      "LatLng": "1.30630262265319,103.827245789862",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "THE CENTREPOINT",
+      "DESCRIPTION": "Back of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/thecentrepoint",
+      "LANDXADDRESSPOINT": "28771.12285",
+      "LANDYADDRESSPOINT": "31648.19",
+      "LatLng": "1.30248949398717,103.840247472352",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "NUTMEG ROAD",
+      "DESCRIPTION": "Behind Lucky Plaza",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/nutmeg-road-dsa",
+      "LANDXADDRESSPOINT": "28141.238",
+      "LANDYADDRESSPOINT": "31864.738",
+      "LatLng": "1.30444788705589,103.834587668429",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "THE HEEREN",
+      "DESCRIPTION": "Side of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/heeren--1",
+      "LANDXADDRESSPOINT": "28484.87647",
+      "LANDYADDRESSPOINT": "31668.68577",
+      "LatLng": "1.30267485656421,103.837675417407",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "THE PARAGON",
+      "DESCRIPTION": "Side of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/the-paragon",
+      "LANDXADDRESSPOINT": "28197.24353",
+      "LANDYADDRESSPOINT": "31820.46251",
+      "LatLng": "1.3040474747283,103.835090903661",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "WHEELOCK PLACE",
+      "DESCRIPTION": "Back of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/wheelock-place",
+      "LANDXADDRESSPOINT": "27635.40074",
+      "LANDYADDRESSPOINT": "31871.9391",
+      "LatLng": "1.30451300941648,103.830042484543",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "JEN SINGAPORE TANGLIN",
+      "DESCRIPTION": "Side of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/hotel-jen-tanglin",
+      "LANDXADDRESSPOINT": "26920.57402",
+      "LANDYADDRESSPOINT": "31849.1505",
+      "LatLng": "1.30430690064673,103.823619434286",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "YORK HOTEL",
+      "DESCRIPTION": "Back of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/york-hotel-(2)",
+      "LANDXADDRESSPOINT": "28153.68854",
+      "LANDYADDRESSPOINT": "32149.66582",
+      "LatLng": "1.30702467361532,103.834699543363",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "YORK HOTEL",
+      "DESCRIPTION": "Front of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/york-hotel-1",
+      "LANDXADDRESSPOINT": "28168.56452",
+      "LANDYADDRESSPOINT": "32174.96696",
+      "LatLng": "1.30725348867295,103.834833211426",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "KILLINEY POST OFFICE",
+      "DESCRIPTION": "Side of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/killney-post-office",
+      "LANDXADDRESSPOINT": "28817.16225",
+      "LANDYADDRESSPOINT": "31405.76862",
+      "LatLng": "1.30029711903723,103.84066115116",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "MANDARIN GALLERY",
+      "DESCRIPTION": "Side of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/mandarin-gallery-(1)",
+      "LANDXADDRESSPOINT": "28278.02818",
+      "LANDYADDRESSPOINT": "31612.12354",
+      "LatLng": "1.30216332957483,103.835816789866",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "ORCHARD PLAZA",
+      "DESCRIPTION": "Side of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/orchard-plaza",
+      "LANDXADDRESSPOINT": "28838.14301",
+      "LANDYADDRESSPOINT": "31487.5758",
+      "LatLng": "1.30103695399208,103.840849674403",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "THE REGENT SINGAPORE",
+      "DESCRIPTION": "Front of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/the-regent-singapore-2",
+      "LANDXADDRESSPOINT": "27015.54884",
+      "LANDYADDRESSPOINT": "31834.5626",
+      "LatLng": "1.3041749759888,103.824472827514",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "THE REGENT SINGAPORE",
+      "DESCRIPTION": "Side of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/the-regent-singapore-1",
+      "LANDXADDRESSPOINT": "27058.50344",
+      "LANDYADDRESSPOINT": "31834.13556",
+      "LatLng": "1.30417111568879,103.824858794574",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "CONCORDE HOTEL AND SHOPPING MALL",
+      "DESCRIPTION": "Back of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/concorde-hotel3",
+      "LANDXADDRESSPOINT": "29001.84216",
+      "LANDYADDRESSPOINT": "31464.24008",
+      "LatLng": "1.30082590929786,103.84232058524",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "PLAZA SINGAPURA",
+      "DESCRIPTION": "Front of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/plaza-sing",
+      "LANDXADDRESSPOINT": "29294.39506",
+      "LANDYADDRESSPOINT": "31338.26936",
+      "LatLng": "1.29968666385197,103.844949300339",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "LUCKY PLAZA",
+      "DESCRIPTION": "Side of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/lucky-plaza-dsa",
+      "LANDXADDRESSPOINT": "28015.69991",
+      "LANDYADDRESSPOINT": "31885.94731",
+      "LatLng": "1.30463969680446,103.833459650124",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "TANG PLAZA",
+      "DESCRIPTION": "Side of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/tang-plaza-dsa-side-of-building-to-scotts-square",
+      "LANDXADDRESSPOINT": "27984.028",
+      "LANDYADDRESSPOINT": "31976.836",
+      "LatLng": "1.30546166218208,103.833175063274",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "HOLIDAY INN EXPRESS SINGAPORE ORCHARD ROAD",
+      "DESCRIPTION": "Side of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/holiday-inn-express-singapore-orchard-road-1",
+      "LANDXADDRESSPOINT": "28378.45958",
+      "LANDYADDRESSPOINT": "31704.22365",
+      "LatLng": "1.3029962493868,103.836719213082",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "HOLIDAY INN EXPRESS SINGAPORE ORCHARD ROAD",
+      "DESCRIPTION": "Back of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/holiday-inn-express-singapore-orchard-road-2",
+      "LANDXADDRESSPOINT": "28368.45177",
+      "LANDYADDRESSPOINT": "31710.34821",
+      "LatLng": "1.3030516382321,103.83662928846",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "NGEE ANN CITY",
+      "DESCRIPTION": "Side of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/nac2",
+      "LANDXADDRESSPOINT": "28044.79891",
+      "LANDYADDRESSPOINT": "31740.01652",
+      "LatLng": "1.3033199500278,103.833721118013",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "CONCORDE HOTEL AND SHOPPING MALL",
+      "DESCRIPTION": "Back of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/dsa_concorde-hotel-and-shopping-mall-2",
+      "LANDXADDRESSPOINT": "29070.25559",
+      "LANDYADDRESSPOINT": "31490.50987",
+      "LatLng": "1.30106348183916,103.842935311524",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "CATHAY CINELEISURE ORCHARD",
+      "DESCRIPTION": "Back of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/cathay-cineleisure-orchard-3",
+      "LANDXADDRESSPOINT": "28322.404",
+      "LANDYADDRESSPOINT": "31558.806",
+      "LatLng": "1.30168114445204,103.836215526196",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "FOUR SEASONS HOTEL",
+      "DESCRIPTION": "Back of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/four-seasons-hotel-singapore-(2)",
+      "LANDXADDRESSPOINT": "27481.66183",
+      "LANDYADDRESSPOINT": "31987.71647",
+      "LatLng": "1.30556005722654,103.828661066938",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "GOODWOOD PARK HOTEL",
+      "DESCRIPTION": "Side of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/goodwood-park-hotel-2",
+      "LANDXADDRESSPOINT": "28093.83528",
+      "LANDYADDRESSPOINT": "32340.64286",
+      "LatLng": "1.30875180341674,103.834161734495",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "GOODWOOD PARK HOTEL",
+      "DESCRIPTION": "Front of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/goodwood-park-hotel-1",
+      "LANDXADDRESSPOINT": "28118.32287",
+      "LANDYADDRESSPOINT": "32416.27081",
+      "LatLng": "1.30943575539285,103.834381767648",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "GOODWOOD PARK HOTEL",
+      "DESCRIPTION": "Back of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/goodwood-park-hotel-3",
+      "LANDXADDRESSPOINT": "28164.41895",
+      "LANDYADDRESSPOINT": "32272.16313",
+      "LatLng": "1.30813249595894,103.834795962644",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "HOLIDAY INN SINGAPORE ORCHARD CITY CENTRE",
+      "DESCRIPTION": "Back of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/holiday-inn-orchard-city-centre-2",
+      "LANDXADDRESSPOINT": "28874.31467",
+      "LANDYADDRESSPOINT": "31641.83856",
+      "LatLng": "1.30243205143124,103.841174697849",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "HOLIDAY INN SINGAPORE ORCHARD CITY CENTRE",
+      "DESCRIPTION": "Back of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/holiday-inn-orchard-city-centre-1",
+      "LANDXADDRESSPOINT": "28889.118",
+      "LANDYADDRESSPOINT": "31627.50154",
+      "LatLng": "1.30230239132881,103.841307711882",
+      "ICON_NAME": "icon.png"
+    },
+    {
+      "NAME": "NGEE ANN CITY",
+      "DESCRIPTION": "Side of building",
+      "PHOTOURL": "https://www.nea.gov.sg/images/default-source/our-serivces/smoking-prohibition/dsa/nac",
+      "LANDXADDRESSPOINT": "28253.36502",
+      "LANDYADDRESSPOINT": "31630.49708",
+      "LatLng": "1.30232949415302,103.835595179872",
+      "ICON_NAME": "icon.png"
+    }
+  ]
+}
