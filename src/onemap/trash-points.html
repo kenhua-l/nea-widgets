@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <head>
+    <title>Recycling / Collection Points Map</title>
+    @@include('../partials/head.html')
+  </head>
+  <body class="d-flex flex-column h-100">
+    @@include('../partials/header.html')
+    <main>
+      <section aria-label="main content">
+        <div class="container">
+          <h1>Recycling / Collection Points Map</h1>
+          <p>The data shown is a snapshot from 4 March 2023</p>
+          <div id="onemap">
+            <div id="mapdiv"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    @@include('../partials/footer.html')
+    @@include('../partials/scripts.html')
+    <script>
+       // Define the layers
+      var themes = ['reusechannels', 'ewaste'];
+      let themeNames = ['Donation, Resale and Repair Channels', 'E-waste / Ink and Toner Cartridges Recycling'];
+      let layers = {};
+
+      var center = L.bounds([1.46905, 104.11475], [1.16, 103.502]).getCenter();
+      var basemap = L.tileLayer('https://maps-{s}.onemap.sg/v3/Original/{z}/{x}/{y}.png', {
+        attribution: 'Map data © contributors, <a href="http://SLA.gov.sg" target="_blank" rel="noopener noreferrer">Singapore Land Authority</a><br>Collection Centres &copy; 2018',
+        maxZoom: 18,
+        minZoom: 11
+      });
+
+      // basemap.addTo(map);
+      basemap.on('tileload', function (tileEvent) {
+        tileEvent.tile.setAttribute('alt', 'Map tile image');
+      });
+     
+      for(let t=0; t < themes.length; t++) {
+        let theme = themes[t]
+        let themeLayer = L.layerGroup();
+        $.get('/data/' + theme + '.json', function(data) {
+          data = JSON.stringify(data);
+          data = JSON.parse(data);
+          let icon = new L.Icon({
+            iconUrl: '/img/' + theme + '.png',
+            iconSize: [34, 34],
+            iconAnchor: [17, 17],
+            popupAnchor: [0, -17],
+          });
+
+          for (var i = 1; i < data.SrchResults.length; i++) {
+            let result = data.SrchResults[i];
+            let latlng = data.SrchResults[i].LatLng;
+            let lat = parseFloat(latlng.split(',')[0]);
+            let lng = parseFloat(latlng.split(',')[1]);
+
+            let name = result.NAME ? result.NAME : '';
+            let description = result.DESCRIPTION ? result.DESCRIPTION : '';
+            let buildingNumber = result.ADDRESSBLOCKHOUSENUMBER ? result.ADDRESSBLOCKHOUSENUMBER : '';
+            let streetName = result.ADDRESSSTREETNAME ? result.ADDRESSSTREETNAME : '';
+            let buildingName = result.ADDRESSBUILDINGNAME ? result.ADDRESSBUILDINGNAME : '';
+            let postalCode = result.ADDRESSPOSTALCODE ? result.ADDRESSPOSTALCODE : '';
+            let unitNumber = result.ADDRESSUNITNUMBER ? '<br />- ' + result.ADDRESSUNITNUMBER : '';
+            let hyperlink = '';
+            if(result.HYPERLINK) {
+              let links = result.HYPERLINK.split('; ');
+              for(let link of links) {
+                hyperlink += '<a href=' + link + ' target="_blank" rel="noopener noreferrer">' + link + '</a><br />'
+              }
+            }
+            var reusetype = result.REUSETYPE ? result.REUSETYPE : '';
+            var accepteditems = result.ACCEPTEDITEMS ? result.ACCEPTEDITEMS : '';
+
+            let updatedPopup = '<div class="popup-info"><b>' + themeNames[t] + '</b><hr>' +
+              name + '<br />' +
+              'Address: ' + buildingNumber +
+              ' ' + streetName + ' ' + unitNumber + ', ' + buildingName + '<br />' +
+              ' Singapore ' + postalCode + '<br /><br />' +
+              (theme == 'reusechannels' ? reusetype + ': ' + accepteditems + '<br /><br />' : '') +
+              description + '<br /><br />' +
+              hyperlink + '</div>';
+            L.marker([lat, lng], { icon: icon, alt: theme + ' icon' }).bindPopup(updatedPopup, { maxWidth: 220 }).addTo(themeLayer);
+          }
+        });
+
+        layers[themeNames[t]] = themeLayer;
+      }
+      
+      var layersToMap = [basemap];
+      for(let l in layers) {
+        layersToMap.push(layers[l]);
+      }
+
+      var layersControl = L.control.layers(null, layers, { collapsed: false });
+      var map = L.map('mapdiv', {
+        center: [center.x, center.y],
+        zoom: 11,
+        layers: layersToMap
+      });
+      attribution = map.attributionControl;
+      attribution.setPrefix('<img src="https://docs.onemap.sg/maps/images/oneMap64-01.png" alt="onemap logo" style="height:20px;width:20px;"/>');
+      layersControl.addTo(map);
+      
+    </script>
+  </body>
+</html>
