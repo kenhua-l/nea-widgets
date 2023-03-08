@@ -327,6 +327,80 @@
   }
 }
 
+// rain area
+.slider-container {
+  display: flex;
+  .slider-button-container {
+    flex-basis: 3rem;
+    padding-right: 2rem;
+  }
+  .slider-button {
+    background: $nea-dark-green;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 0;
+    position: relative;
+    .slider-play {
+      position: absolute;
+      width: 0.65rem;
+      height: 0.75rem;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-left: 0.65rem solid white;
+      border-top: 0.325rem solid transparent;
+      border-bottom: 0.325rem solid transparent;
+    }
+    .slider-stop {
+      position: absolute;
+      width: 0.75rem;
+      height: 0.75rem;
+      background: white;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .slider {
+    height: 2rem;
+    width: 100%;
+    background: #ddd;
+    border-radius: 15px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    .slider-progress {
+      height: 2rem;
+      width: 0;
+      border-radius: 15px 10px 10px 15px;
+      background: $nea-dark-green;
+      position: absolute;
+      z-index: 0;
+      .slider-bob {
+        position: absolute;
+        width: 1.75rem;
+        height: 1.75rem;
+        background: #6a2f94;
+        border-radius: 50%;
+        border: 2px solid white;
+        top: 50%;
+        right: 0;
+        transform: translate(50%, -50%);
+      }
+    }
+    span {
+      height: 100%;
+      border-right: 1px solid rgba(0, 0, 0, 0.2);
+      display: inline-block;
+      z-index: 1;
+      &:nth-child(2), &:last-child {
+        border-right: 0;
+      }
+    }
+  }
+}
+
 // haze hotspot
 .legend-table {
   .legend {
