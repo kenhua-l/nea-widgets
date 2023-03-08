@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <head>
+    <title>Haze Hotspots</title>
+    @@include('../partials/head.html')
+  </head>
+  <body class="d-flex flex-column h-100">
+    @@include('../partials/header.html')
+    <main>
+      <section aria-label="main content">
+        <div class="container">
+          <h1>Haze Hotspots</h1>
+          <p>The data shown is a snapshot from 10 Oct 2019</p>
+          <p><a href="https://www.nea.gov.sg/weather/regional-haze-situation" target="_blank">Live Widget Location</a></p>
+          
+          <div class="bg-white p-3">
+            <h2 class="text-center">HOTSPOTS</h2>
+            <div class="row">
+              <div class="col-sm-6">
+                <div id="canvasDiv" style="height: 400px; overflow: hidden;">
+                  <div id="canvas" style="width: 800px; height: 800px"></div>
+                </div>
+                <p class="pt-2" style="line-height: 1;"><small>The hotspots are derived from satellite data and may be affected by cloud cover and the satellite coverage.</small></p>
+              </div>
+              <div class="col-sm-6">
+                <div class="pb-4">
+                  <h3 class="h5">Overlay</h3>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="wind" id="wind">
+                    <label class="form-check-label" for="wind">2500ft wind</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="satellite" id="satellite">
+                    <label class="form-check-label" for="satellite">Satellite Image</label>
+                  </div>
+                </div>
+                <div class="">
+                  <h3 class="h5">Legend</h3>
+                  <div class="legend-table">
+                    <div class="legend">
+                      <div class="legend-icon"><span class="dense-haze"></span></div>
+                      <div class="legend-label">Dense Haze</div>
+                    </div>
+                    <div class="legend">
+                      <div class="legend-icon"><span class="moderate-haze"></span></div>
+                      <div class="legend-label">Moderate Haze</div>
+                    </div>
+                    <div class="legend">
+                      <div class="legend-icon"><span class="hotspot"></span></div>
+                      <div class="legend-label">Hotspot</div>
+                    </div>
+                    <div class="legend">
+                      <div class="legend-icon"><span class="wind"></span></div>
+                      <div class="legend-label">2500ft wind</div>
+                    </div>
+                    <div class="legend">
+                      <div class="legend-icon">
+                        <div class="wind-speed">
+                          <span>0</span>
+                          <span>20</span>
+                          <span>40</span>
+                          <span>60</span>
+                          <span>>80</span>
+                        </div>
+                      </div>
+                      <div class="legend-label">Wind speed (km/h)</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+         
+        </div>
+      </section>
+    </main>
+    @@include('../partials/footer.html')
+    @@include('../partials/scripts.html')
+    <script src="/js/sketch.js" type="text/javascript"></script>
+    <script src="/js/hotspot.js" type="text/javascript"></script>
+  </body>
+</html>
