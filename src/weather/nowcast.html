@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <head>
+    <title>Weather Nowcast</title>
+    @@include('../partials/head.html')
+  </head>
+  <body class="d-flex flex-column h-100">
+    @@include('../partials/header.html')
+    <main>
+      <section aria-label="main content">
+        <div class="container">
+          <h1>Weather Nowcast</h1>
+          <p>The data shown is a snapshot from 8 March 2023</p>
+          <p><a href="https://www.nea.gov.sg/weather#weather-forecast2hr" target="_blank">Live Widget Location</a></p>
+          
+          <nav>
+            <div class="nav nav-tabs" id="weather-nav" role="tablist">
+              <button class="nav-link active" id="nowcast-tab" data-bs-toggle="tab" data-bs-target="#nowcast" type="button" role="tab" aria-controls="nowcast" aria-selected="true">2-hour Nowcast</button>
+              <button class="nav-link" id="forecast-tab" data-bs-toggle="tab" data-bs-target="#forecast" type="button" role="tab" aria-controls="forecast" aria-selected="false">24-hour Forecast</button>
+            </div>
+          </nav>
+          <div class="tab-content" id="weather-content">
+            <div class="tab-pane fade show active" id="nowcast" role="tabpanel" aria-labelledby="nowcast-tab">
+              <div class="row">
+                <div class="col-12 d-md-none">
+                  <p><small>1.30 pm to 3.30 pm</small></p>
+                  <div class="nav nav-tabs tab-list" id="mobile-nowcast-nav" role="tablist">
+                    <button class="nav-link" id="west-tab" data-bs-toggle="tab" data-bs-target="#west" type="button" role="tab" aria-controls="west" aria-selected="false">West</button>
+                    <button class="nav-link" id="north-tab" data-bs-toggle="tab" data-bs-target="#north" type="button" role="tab" aria-controls="north" aria-selected="false">North</button>
+                    <button class="nav-link active" id="central-tab" data-bs-toggle="tab" data-bs-target="#central" type="button" role="tab" aria-controls="central" aria-selected="true">Central</button>
+                    <button class="nav-link" id="south-tab" data-bs-toggle="tab" data-bs-target="#south" type="button" role="tab" aria-controls="south" aria-selected="false">South</button>
+                    <button class="nav-link" id="east-tab" data-bs-toggle="tab" data-bs-target="#east" type="button" role="tab" aria-controls="east" aria-selected="false">East</button>
+                  </div>
+
+                  <div class="tab-content" id="mobile-nowcast-content">
+                    <div class="tab-pane fade" id="west" role="tabpanel" aria-labelledby="west-tab">
+                      <table class="table pt-3 align-middle">
+                        <thead>
+                          <tr>
+                            <th>Town</th>
+                            <th>Weather</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Boon Lay</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Bukit Batok</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Choa Chu Kang</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Clementi</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Jalan Bahar</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Jurong East</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Jurong Island</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Jurong West</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Pioneer</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Tengah</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Tuas</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Western Islands</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Western Water Catchment</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="tab-pane fade" id="north" role="tabpanel" aria-labelledby="north-tab">
+                      <table class="table pt-3 align-middle">
+                        <thead>
+                          <tr>
+                            <th>Town</th>
+                            <th>Weather</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Lim Chu Kang</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Mandai</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Punggol</td>
+                            <td><img src="/img/nowcast/ls.png" alt="cloudy" /> Light Showers</td>
+                          </tr>
+                          <tr>
+                            <td>Seletar</td>
+                            <td><img src="/img/nowcast/ls.png" alt="cloudy" /> Light Showers</td>
+                          </tr>
+                          <tr>
+                            <td>Sembawang</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Sengkang</td>
+                            <td><img src="/img/nowcast/ls.png" alt="cloudy" /> Light Showers</td>
+                          </tr>
+                          <tr>
+                            <td>Sungei Kadut</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Woodlands</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Yishun</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="tab-pane fade show active" id="central" role="tabpanel" aria-labelledby="central-tab">
+                      <table class="table pt-3 align-middle">
+                        <thead>
+                          <tr>
+                            <th>Town</th>
+                            <th>Weather</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Ang Mo Kio</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Bishan</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Bukit Panjang</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Bukit Timah</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Central Water Catchment</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Novena</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Serangoon</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Toa Payoh</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="tab-pane fade" id="south" role="tabpanel" aria-labelledby="south-tab">
+                      <table class="table pt-3 align-middle">
+                        <thead>
+                          <tr>
+                            <th>Town</th>
+                            <th>Weather</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Bukit Merah</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>City</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Kallang</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Queenstown</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Sentosa</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Southern Islands</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Tanglin</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="tab-pane fade" id="east" role="tabpanel" aria-labelledby="east-tab">
+                      <table class="table pt-3 align-middle">
+                        <thead>
+                          <tr>
+                            <th>Town</th>
+                            <th>Weather</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Bedok</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Changi</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Geylang</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Hougang</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Marine Parade</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Pasir Ris</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Paya Lebar</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Pulau Tekong</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Pulau Ubin</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                          <tr>
+                            <td>Tampines</td>
+                            <td><img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="col-12 d-none d-md-block">
+                  <div class="nowcast-map">
+                    <img src="/img/nowcast/sg-map-weather-forecast.png" alt="singapore map" />
+                    <p class="time">1.30 pm to 3.30 pm</p>
+                    <p class="updated-time">Updated at 1.30pm 08 Mar</p>
+                    <div id="weather-grid" class="weather-grid">
+                      <span data-toggle="tooltip" id="Ang_Mo_Kio" title="Ang Mo Kio Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Bedok" title="Bedok Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Bishan" title="Bishan Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Boon_Lay" title="Boon Lay Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Bukit_Batok" title="Bukit Batok Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Bukit_Merah" title="Bukit Merah Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Bukit_Panjang" title="Bukit Panjang Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Bukit_Timah" title="Bukit Timah Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Central_Water_Catchment" title="Central Water Catchment Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Changi" title="Changi Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Choa_Chu_Kang" title="Choa Chu Kang Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Clementi" title="Clementi Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="City" title="City Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Geylang" title="Geylang Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Hougang" title="Hougang Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Jalan_Bahar" title="Jalan Bahar Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Jurong_East" title="Jurong East Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Jurong_Island" title="Jurong Island Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Jurong_West" title="Jurong West Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Kallang" title="Kallang Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Lim_Chu_Kang" title="Lim Chu Kang Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Mandai" title="Mandai Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Marine_Parade" title="Marine Parade Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Novena" title="Novena Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Pasir_Ris" title="Pasir Ris Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Paya_Lebar" title="Paya Lebar Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Pioneer" title="Pioneer Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Pulau_Tekong" title="Pulau Tekong Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Pulau_Ubin" title="Pulau Ubin Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Punggol" title="Punggol Light Showers"><img class="image" src="/img/nowcast/ls.png" alt="Light Showers icon"></span>
+                      <span data-toggle="tooltip" id="Queenstown" title="Queenstown Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Seletar" title="Seletar Light Showers"><img class="image" src="/img/nowcast/ls.png" alt="Light Showers icon"></span>
+                      <span data-toggle="tooltip" id="Sembawang" title="Sembawang Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Sengkang" title="Sengkang Light Showers"><img class="image" src="/img/nowcast/ls.png" alt="Light Showers icon"></span>
+                      <span data-toggle="tooltip" id="Sentosa" title="Sentosa Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Serangoon" title="Serangoon Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Southern_Islands" title="Southern Islands Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Sungei_Kadut" title="Sungei Kadut Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Tampines" title="Tampines Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Tanglin" title="Tanglin Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Tengah" title="Tengah Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Toa_Payoh" title="Toa Payoh Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Tuas" title="Tuas Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Western_Islands" title="Western Islands Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Western_Water_Catchment" title="Western Water Catchment Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Woodlands" title="Woodlands Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                      <span data-toggle="tooltip" id="Yishun" title="Yishun Cloudy"><img class="image" src="/img/nowcast/cl.png" alt="Cloudy icon"></span>
+                    </div>
+                  </div>
+                  <p class="pt-3" style="cursor:pointer" data-bs-toggle="collapse" data-bs-target="#nowcastLegend" aria-expanded="false" aria-controls="nowcastLegend">Legend +</p>
+                  <div class="collapse nowcast-legend" id="nowcastLegend">
+                    <div class="legend">
+                      <img src="/img/nowcast/cl.png" alt="cloudy" /> Cloudy
+                    </div>
+                    <div class="legend">
+                      <img src="/img/nowcast/ls.png" alt="light showers" /> Light Showers
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="forecast" role="tabpanel" aria-labelledby="forecast-tab">
+              <div class="row">
+                <div class="col-12 col-md-8">
+                  <div class="tab-content" style="margin: 0 -1rem" id="forecast-content">
+                    <div class="tab-pane show active" id="forecast1" role="tabpanel" aria-labelledby="forecast1-tab">
+                      <div class="nowcast-map">
+                        <img src="/img/nowcast/sg-map-weather-forecast.png" alt="singapore map" />
+                        <p class="time">Midday to 6 pm 8 Mar</p>
+                        <p class="updated-time">Updated at 1.30pm 08 Mar</p>
+                        <div class="weather-grid-area">
+                          <span data-toggle="tooltip" title="Showers" class="north"><img class="image" src="/img/nowcast/sh.png" alt="Showers icon"></span>
+                          <span data-toggle="tooltip" title="Showers" class="south"><img class="image" src="/img/nowcast/sh.png" alt="Showers icon"></span>
+                          <span data-toggle="tooltip" title="Showers" class="central"><img class="image" src="/img/nowcast/sh.png" alt="Showers icon"></span>
+                          <span data-toggle="tooltip" title="Showers" class="east"><img class="image" src="/img/nowcast/sh.png" alt="Showers icon"></span>
+                          <span data-toggle="tooltip" title="Showers" class="west"><img class="image" src="/img/nowcast/sh.png" alt="Showers icon"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane" id="forecast2" role="tabpanel" aria-labelledby="forecast2-tab">
+                      <div class="nowcast-map">
+                        <img src="/img/nowcast/sg-map-weather-forecast.png" alt="singapore map" />
+                        <p class="time">6 pm 8 Mar to 6 am 9 Mar</p>
+                        <p class="updated-time">Updated at 1.30pm 08 Mar</p>
+                        <div class="weather-grid-area">
+                          <span data-toggle="tooltip" title="Partly Cloudy" class="north"><img class="image" src="/img/nowcast/pn.png" alt="Partly Cloudy icon"></span>
+                          <span data-toggle="tooltip" title="Partly Cloudy" class="south"><img class="image" src="/img/nowcast/pn.png" alt="Partly Cloudyicon"></span>
+                          <span data-toggle="tooltip" title="Partly Cloudy" class="central"><img class="image" src="/img/nowcast/pn.png" alt="Partly Cloudy icon"></span>
+                          <span data-toggle="tooltip" title="Partly Cloudy" class="east"><img class="image" src="/img/nowcast/pn.png" alt="Partly Cloudy icon"></span>
+                          <span data-toggle="tooltip" title="Partly Cloudy" class="west"><img class="image" src="/img/nowcast/pn.png" alt="Partly Cloudy icon"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane" id="forecast3" role="tabpanel" aria-labelledby="forecast3-tab">
+                      <div class="nowcast-map">
+                        <img src="/img/nowcast/sg-map-weather-forecast.png" alt="singapore map" />
+                        <p class="time">6 am to Midday 9 Mar</p>
+                        <p class="updated-time">Updated at 1.30pm 08 Mar</p>
+                        <div class="weather-grid-area">
+                          <span data-toggle="tooltip" title="Partly Cloudy" class="north"><img class="image" src="/img/nowcast/pc.png" alt="Partly Cloudy icon"></span>
+                          <span data-toggle="tooltip" title="Partly Cloudy" class="south"><img class="image" src="/img/nowcast/pc.png" alt="Partly Cloudyicon"></span>
+                          <span data-toggle="tooltip" title="Partly Cloudy" class="central"><img class="image" src="/img/nowcast/pc.png" alt="Partly Cloudy icon"></span>
+                          <span data-toggle="tooltip" title="Partly Cloudy" class="east"><img class="image" src="/img/nowcast/pc.png" alt="Partly Cloudy icon"></span>
+                          <span data-toggle="tooltip" title="Partly Cloudy" class="west"><img class="image" src="/img/nowcast/pc.png" alt="Partly Cloudy icon"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-4 pt-md-3">
+                  <div class="nav nav-tabs tab-list forecast-tab" id="forecast-nav" role="tablist">
+                    <button class="nav-link active" id="forecast1-tab" data-bs-toggle="tab" data-bs-target="#forecast1" type="button" role="tab" aria-controls="forecast1" aria-selected="true">Afternoon</button>
+                    <button class="nav-link" id="forecast2-tab" data-bs-toggle="tab" data-bs-target="#forecast2" type="button" role="tab" aria-controls="forecast2" aria-selected="false">Night</button>
+                    <button class="nav-link" id="forecast3-tab" data-bs-toggle="tab" data-bs-target="#forecast3" type="button" role="tab" aria-controls="forecast3" aria-selected="false">Morning</button>
+                  </div>
+                  <p class="h4">24-hour Forecst</p>
+                  <p>Showers over many areas in the afternoon</p>
+                  <p>(!) A forecast of thundery showers indicates an imminent risk of lightning. Lightning typically strikes within 6km radius of a location, but is known to strike more than 10km away from the thunderstorm cloud.</p>
+                </div>
+                <div class="col-12">
+                  <p class="pt-3" style="cursor:pointer" data-bs-toggle="collapse" data-bs-target="#forecastLegend" aria-expanded="false" aria-controls="forecastLegend">Legend +</p>
+                  <div class="collapse nowcast-legend" id="forecastLegend">
+                    <div class="legend">
+                      <img src="/img/nowcast/sh.png" alt="showers" /> Showers
+                    </div>
+                    <div class="legend">
+                      <img src="/img/nowcast/pn.png" alt="partly Cloudy" /> Partly Cloudy
+                    </div>
+                    <div class="legend">
+                      <img src="/img/nowcast/pc.png" alt="partly Cloudy" /> Partly Cloudy
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+    @@include('../partials/footer.html')
+    @@include('../partials/scripts.html')
+    <script src="/js/hotspot.js" type="text/javascript"></script>
+  </body>
+</html>

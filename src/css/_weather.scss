@@ -1,0 +1,458 @@
+// nowcast
+.nowcast-map {
+  position: relative;
+  img {
+    width: 100%;
+  }
+  .time {
+    position: absolute;
+    top: 0.25rem;
+    left: 0.25rem;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+  .updated-time {
+    position: absolute;
+    bottom: 0.25rem;
+    right: 0.5rem;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+  .weather-grid-area {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    span {
+      width: 2rem;
+      height: 2rem;
+      position: absolute;
+      display: block;
+      background: white;
+      border-radius: 50%;
+      @media (min-width: 576px) {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+      @media (min-width: 1024px) {
+        width: 3rem;
+        height: 3rem;
+      }
+      &.north {
+        top: 5%;
+        left: 40%;
+      }
+      &.west {
+        top: 30%;
+        left: 15%
+      }
+      &.south {
+        bottom: 33%;
+        left: 40%
+      }
+      &.central {
+        top: 30%;
+        left: 40%
+      }
+      &.east {
+        top: 30%;
+        right: 20%
+      }
+    }
+  }
+  .weather-grid {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    span {
+      width: 1.5rem;
+      height: 1.5rem;
+      position: absolute;
+      display: block;
+      background: white;
+      border-radius: 50%;
+      @media (min-width: 992px) {
+        width: 2rem;
+        height: 2rem;
+      }
+      &#Pioneer {
+        left: 18%;
+        top: 47.5%;
+      }
+      &#Boon_Lay {
+        left: 23%;
+        top: 49%;
+      }
+      &#Tengah {
+        left: 26.16%;
+        top: 26.5%;
+      }
+      &#Bukit_Batok {
+        left: 32.7%;
+        top: 33.7%;
+      }
+      &#Sungei_Kadut {
+        left: 33%;
+        top: 14.5%;
+      }
+      &#Lim_Chu_Kang {
+        left: 26%;
+        top: 11%;
+      }
+      &#Western_Water_Catchment {
+        left: 20.5%;
+        top: 18.51%;
+      }
+      &#Tuas {
+        left: 11.8%;
+        top: 54%;
+      }
+      &#Jurong_Island {
+        left: 19%;
+        top: 61.5%;
+      }
+      &#Bukit_Timah {
+        left: 38.5%;
+        top: 41.8%;
+      }
+      &#Bukit_Merah {
+        left: 43.8%;
+        top: 57.8%;
+      }
+      &#Pulai_Brani {
+        left: 48.04%;
+        top: 70.93%;
+      }
+      &#Sentosa {
+        left: 45.5%;
+        top: 65.81%;
+      }
+      &#Marina {
+        left: 52.67%;
+        top: 66.38%;
+      }
+      &#Marine_Parade {
+        left: 57%;
+        top: 53.5%;
+      }
+      &#Paya_Lebar {
+        left: 60.38%;
+        top: 33.5%;
+      }
+      &#Bedok {
+        left: 61.62%;
+        top: 43%;
+      }
+      &#Hougang {
+        left: 55.5%;
+        top: 31.5%;
+      }
+      &#Bishan {
+        left: 47%;
+        top: 34%;
+      }
+      &#Toa_Payoh {
+        left: 50.44%;
+        top: 40%;
+      }
+      &#Novena {
+        left: 45.5%;
+        top: 42%;
+      }
+      &#Ang_Mo_Kio {
+        left: 47.5%;
+        top: 26.5%;
+      }
+      &#Serangoon {
+        left: 51.5%;
+        top: 32%;
+      }
+      &#Yishun {
+        left: 48%;
+        top: 11.39%;
+      }
+      &#Mandai {
+        left: 42.5%;
+        top: 13%;
+      }
+      &#Woodlands {
+        left: 38%;
+        top: 8%;
+      }
+      &#Sembawang {
+        left: 43.5%;
+        top: 2.8%;
+      }
+      &#Simpang {
+        left: 50.12%;
+        top: 3.13%;
+      }
+      &#Central_Water_Catchment {
+        left: 40.5%;
+        top: 25%;
+      }
+      &#Seletar {
+        left: 54%;
+        top: 15.5%;
+      }
+      &#Punggol {
+        left: 59.7%;
+        top: 17.5%;
+      }
+      &#Pulau_Ubin {
+        left: 68%;
+        top: 17%;
+      }
+      &#Pasir_Ris {
+        left: 65.81%;
+        top: 25.8%;
+      }
+      &#Changi {
+        left: 75%;
+        top: 36%;
+      }
+      &#Tampines {
+        left: 66%;
+        top: 36%
+      }
+      &#Pulau_Tekong {
+        left: 85%;
+        top: 18%;
+      }
+      &#Western_Islands {
+        left: 30.87%;
+        top: 78.62%;
+      }
+      &#Southern_Islands {
+        left: 48.2%;
+        top: 76.06%;
+      }
+      &#St_John_Island {
+        left: 53.67%;
+        top: 87.74%;
+      }
+      &#Kusu_Island {
+        left: 47.56%;
+        top: 82.04%;
+      }
+      &#Clementi {
+        left: 34%;
+        top: 47%;
+      }
+      &#Jurong_East {
+        left: 29.5%;
+        top: 44%;
+      }
+      &#Jurong_West {
+        left: 24.24%;
+        top: 38%;
+      }
+      &#Sengkang {
+        left: 56.5%;
+        top: 23%;
+      }
+      &#Jalan_Bahar {
+        left: 18%;
+        top: 35.3%;
+      }
+      &#Geylang {
+        left: 56%;
+        top: 45%;
+      }
+      &#Kallang {
+        left: 51.8%;
+        top: 48%;
+      }
+      &#City {
+        left: 49%;
+        top: 54%;
+      }
+      &#Tanglin {
+        left: 43%;
+        top: 49%;
+      }
+      &#Queenstown {
+        left: 38.3%;
+        top: 53.5%;
+      }
+      &#Bukit_Panjang {
+        left: 36%;
+        top: 29.5%;
+      }
+      &#Choa_Chu_Kang {
+        left: 31.43%;
+        top: 25%;
+      }
+    }
+  }
+}
+.tab-list {
+  &.forecast-tab {
+    justify-content: flex-start;
+    margin: 0;
+    border: 0;
+    .nav-link {
+      background: white;
+      color: black;
+      flex-basis: auto;
+      border: 0;
+      line-height: 1;
+      &::after {
+        content: '';
+        border-right: 1px solid black;
+        padding-right: 0.5rem;
+        margin-right: 0.5rem;
+      }
+      &:last-child::after {
+        display: none;
+      }
+      &.active {
+        color: $nea-dark-green;
+      }
+    }
+  }
+}
+.nowcast-legend {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 -1rem;
+  .legend {
+    padding: 0 1rem;
+    img {
+      width: 2.5rem;
+    }
+  }
+}
+
+// haze hotspot
+.legend-table {
+  .legend {
+    border-top: 1px solid #eee;
+    display: flex;
+    padding: 0.5rem 0;
+    align-items: center;
+    .legend-icon {
+      flex-basis: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .legend-label {
+
+    }
+  }
+  .dense-haze {
+    background: #98001b;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-block;
+    border-radius: 50%;
+    position: relative;
+    &::after {
+      content: '';
+      background: #f6c6d4;
+      width: 1rem;
+      height: 1rem;
+      position: absolute;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .moderate-haze {
+    background: #f7a838;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-block;
+    border-radius: 50%;
+    position: relative;
+    &::after {
+      content: '';
+      background: #f2d290;
+      width: 1rem;
+      height: 1rem;
+      position: absolute;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .hotspot {
+    background: #e12027;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-block;
+    border-radius: 50%;
+  }
+  .wind {
+    width: 2rem;
+    height: 0.4rem;
+    background: #686868;
+    position: relative;
+    &::after {
+      content: '';
+      width: 0.75rem;
+      height: 1rem;
+      border-right: 0 solid white;
+      border-top: 0.5rem solid white;
+      border-bottom: 0.5rem solid white;
+      border-left: 0.75rem solid #686868;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  .wind-speed {
+    display: flex;
+    padding-right: 1.2rem;
+    span {
+      display: inline-block;
+      width: 2.6rem;
+      position: relative;
+      line-height: 1;
+      padding-top: 1.2rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      &::before {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        width: 2.6rem;
+        height: 0.8rem;
+        top: 0;
+        left: 3px;
+      }
+      &:nth-child(1) {
+        &::before {
+          background: #37b4c5;
+        }
+      }
+      &:nth-child(2) {
+        &::before {
+          background: #277acf;
+        }
+      }
+      &:nth-child(3) {
+        &::before {
+          background: #1744b3;
+        }
+      }
+      &:nth-child(4) {
+        &::before {
+          background: #0a2a6b;
+        }
+      }
+      &:nth-child(5) {
+        &::before {
+          background: #000000;
+        }
+      }
+    }
+  }
+}
