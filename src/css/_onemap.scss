@@ -195,13 +195,12 @@
 }
 
 // after death
-hr {
-  margin-top: 0;
-  margin-bottom: 0.75rem;
-}
-
 .leaflet-popup-content {
   font-size: 0.8rem;
+  hr {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+  }
   p {
     margin: 0 0 1rem;
   }
