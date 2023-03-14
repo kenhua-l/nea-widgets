@@ -456,3 +456,11 @@
     }
   }
 }
+
+// volcano region
+.datamaps-bubble {
+  fill-opacity: 0.5 !important;
+  &.active {
+    fill-opacity: 1 !important;
+  }
+}

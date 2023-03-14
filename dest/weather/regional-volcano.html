@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <head>
+    <title>Regional Volcano</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link href="/css/bootstrap.min.css" rel="stylesheet" />
+<link href="/css/leaflet.css" rel="stylesheet" />
+<link href="/css/main.css" rel="stylesheet" />
+  </head>
+  <body class="d-flex flex-column h-100">
+    <header>
+  <!-- navigation -->
+  <div class="navbar-dark">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="/">NEA Widgets</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarMapLinks" role="button" data-bs-toggle="dropdown" aria-expanded="false">Maps-related</a>
+              <div class="dropdown-menu" aria-labelledby="navbarMapLinks">
+                <a class="dropdown-item" href="/onemap/token.html">API Token</a>
+                <a class="dropdown-item" href="/onemap/dengue-map.html">Dengue Map</a>
+                <a class="dropdown-item" href="/onemap/hawker-centres-map.html">Hawker Centres Map</a>
+                <a class="dropdown-item" href="/onemap/ornsz.html">Non-Smoking Zone Map</a>
+                <a class="dropdown-item" href="/onemap/trash-points.html">Recycling / Collection Points Map</a>
+                <a class="dropdown-item" href="/onemap/after-death.html">After Death Map</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarWeather" role="button" data-bs-toggle="dropdown" aria-expanded="false">Weather-related</a>
+              <div class="dropdown-menu" aria-labelledby="navbarWeather">
+                <a class="dropdown-item" href="/weather/nowcast.html">Weather Nowcast</a>
+                <a class="dropdown-item" href="/weather/haze-hotspots.html">Haze Hotspots</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <main>
+      <section aria-label="main content">
+        <div class="container">
+          <h1>Regional Volcano</h1>
+          <p>The data shown is a snapshot from 8 March 2023</p>
+          <p><a href="https://www.nea.gov.sg/weather/regional-volcanic-eruptions" target="_blank">Live Widget Location</a></p>
+          
+          <div class="row">
+            <div class="col-12 col-md-7">
+              <div class="map-div" id="regional-volcano" style="position: relative; width: 500px; height:600px"></div>
+              <button class="btn btn--solid-green zoom-button" data-zoom="reset" onclick="return false">Reset</button>
+              <button class="btn btn--solid-green zoom-button" data-zoom="out" onclick="return false">-</button>
+              <button class="btn btn--solid-green zoom-button" data-zoom="in" onclick="return false">+</button>
+            </div>
+            <div class="col-12 col-md-5">
+              <div class="title_tab">
+                <table class="title_table">
+                    <tr>
+                        <td><span id="dName">Volcano</span></td>
+                        <td><span id="dDate">Date of Last Eruption</span></td>
+                    </tr>
+                </table>
+              </div>
+              <div class="tab-content accordion-content"></div>
+            </div>
+          </div>
+        
+        </div>
+      </section>
+    </main>
+    <footer class="mt-auto">
+  <div class="container footer-container">
+    <p class="py-2 m-0 text-white display-inline-block">
+      &copy; Copyright kenhua-l
+    </p>
+    <a class="py-2 m-0" href="https://www.notion.so/kenhua-l/My-Resume-d4770728286f44a2ad4b4d705f91ccf7" target="_blank">My Resume</a>
+  </div>
+</footer>
+    <script src="/js/jquery.min.js" type="text/javascript"></script>
+<script src="/js/popper.min.js" type="text/javascript"></script>
+<script src="/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/js/leaflet.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+    <script src="/js/d3.min.js" type="text/javascript"></script>
+    <script src="/js/topojson.min.js" type="text/javascript"></script>
+    <script src="/js/datamaps.min.js" type="text/javascript"></script>
+    <script>
+
+
+      // map related
+      let center = [135, -3];
+      let scale = 280;
+      var map = new Datamaps({
+        scope: 'world',
+        element: $('#regional-volcano').get(0),
+        setProjection: function(elem) {
+          var projection = d3.geo.equirectangular()
+            .center(center)
+            .scale(scale)
+            .translate([elem.offsetWidth / 2, elem.offsetHeight / 2]);
+          var path = d3.geo.path().projection(projection);
+          return {
+            path: path,
+            projection: projection
+          }
+        },
+        geographyConfig: {
+          dataUrl: null,
+          hideAntarctica: true,
+          borderWidth: 1,
+          borderOpacity: 1,
+          borderColor: '#fdfdfd',
+          popupOnHover: false,
+          highlightOnHover: false,
+          highlightFillColor: '#3250a8',
+          highlightBorderColor: 'rgba(250, 15, 160, 0.2)',
+          highlightBorderWidth: 2,
+          highlightBorderOpacity: 1
+        },
+        fills: {
+          defaultFill: "#c9c9c9",
+          pnt: "#000000"
+        }, 
+        done: function(e) {
+          console.log('done', e);
+
+        }
+      })
+
+      $.getJSON('/data/active-volcano.json', function(volcanoes) {
+        volcanoes.map(function(volcano) {
+          volcano.longitude = volcano.Lon,
+          volcano.latitude = volcano.Lat,
+          volcano.radius = 8,
+          volcano.fillKey = 'pnt'
+        });
+        map.bubbles(volcanoes, {
+          borderWidth: 1,
+          popupOnHover: false,
+          highlightOnHover: false
+        });
+        d3.selectAll('.datamaps-bubble').style('fill', function(volcano) {
+          return volcano.IsEruptive ? 'red' : 'purple';
+        });
+        d3.selectAll('.datamaps-bubble').on('click', function(volcano) {
+          let isActive = d3.select(this).classed('active');
+          d3.selectAll('.datamaps-bubble').classed('active', false);
+          d3.select(this).classed('active', !isActive);
+          // window.HandleBubbleClick(volcano);
+        });
+      });
+
+      map.labels({
+        customLabelText: {
+          AFG: " ",
+          ALA: " ",
+          ALB: " ",
+          DZA: " ",
+          ASM: " ",
+          AND: " ",
+          AGO: " ",
+          AIA: " ",
+          ATA: " ",
+          ATG: " ",
+          ARG: " ",
+          ARM: " ",
+          ABW: " ",
+          AUS: "Australia",
+          AUT: " ",
+          AZE: " ",
+          BHS: " ",
+          BHR: " ",
+          BGD: " ",
+          BRB: " ",
+          BLR: " ",
+          BEL: " ",
+          BLZ: " ",
+          BEN: " ",
+          BMU: " ",
+          BTN: " ",
+          BOL: " ",
+          BES: " ",
+          BIH: " ",
+          BWA: " ",
+          BVT: " ",
+          BRA: " ",
+          IOT: " ",
+          VGB: " ",
+          BRN: "Brunei",
+          BGR: " ",
+          BFA: " ",
+          BDI: " ",
+          KHM: "Cambodia",
+          CMR: " ",
+          CAN: " ",
+          CPV: " ",
+          CYM: " ",
+          CAF: " ",
+          TCD: " ",
+          CHL: " ",
+          CHN: "China",
+          CXR: " ",
+          CCK: " ",
+          COL: " ",
+          COM: " ",
+          COK: " ",
+          CRI: " ",
+          HRV: " ",
+          CUB: " ",
+          CUW: " ",
+          CYP: " ",
+          CZE: " ",
+          COD: " ",
+          DNK: " ",
+          DJI: " ",
+          DMA: " ",
+          DOM: " ",
+          TLS: " ",
+          ECU: " ",
+          EGY: " ",
+          SLV: " ",
+          GNQ: " ",
+          ERI: " ",
+          EST: " ",
+          ETH: " ",
+          FLK: " ",
+          FRO: " ",
+          FJI: " ",
+          FIN: " ",
+          FRA: " ",
+          GUF: " ",
+          PYF: " ",
+          ATF: " ",
+          GAB: " ",
+          GMB: " ",
+          GEO: " ",
+          DEU: " ",
+          GHA: " ",
+          GIB: " ",
+          GRC: " ",
+          GRL: " ",
+          GRD: " ",
+          GLP: " ",
+          GUM: " ",
+          GTM: " ",
+          GGY: " ",
+          GIN: " ",
+          GNB: " ",
+          GUY: " ",
+          HTI: " ",
+          HMD: " ",
+          HND: " ",
+          HKG: "Hong Kong",
+          HUN: " ",
+          ISL: " ",
+          IND: " ",
+          IDN: "Indonesia",
+          IRN: " ",
+          IRQ: " ",
+          IRL: " ",
+          IMN: " ",
+          ISR: " ",
+          ITA: " ",
+          CIV: " ",
+          JAM: " ",
+          JPN: "Japan",
+          JEY: " ",
+          JOR: " ",
+          KAZ: " ",
+          KEN: " ",
+          KIR: " ",
+          XKX: " ",
+          KWT: " ",
+          KGZ: " ",
+          LAO: "Laos",
+          LVA: " ",
+          LBN: " ",
+          LSO: " ",
+          LBR: " ",
+          LBY: " ",
+          LIE: " ",
+          LTU: " ",
+          LUX: " ",
+          MAC: " ",
+          MKD: " ",
+          MDG: " ",
+          MWI: " ",
+          MYS: "Malaysia",
+          MDV: " ",
+          MLI: " ",
+          MLT: " ",
+          MHL: " ",
+          MTQ: " ",
+          MRT: " ",
+          MUS: " ",
+          MYT: " ",
+          MEX: " ",
+          FSM: " ",
+          MDA: " ",
+          MCO: " ",
+          MNG: " ",
+          MNE: " ",
+          MSR: " ",
+          MAR: " ",
+          MOZ: " ",
+          MMR: "Myanmar",
+          NAM: " ",
+          NRU: " ",
+          NPL: " ",
+          NLD: " ",
+          ANT: " ",
+          NCL: " ",
+          NZL: "New Zealand",
+          NIC: " ",
+          NER: " ",
+          NGA: " ",
+          NIU: " ",
+          NFK: " ",
+          PRK: "North Korea",
+          MNP: " ",
+          NOR: " ",
+          OMN: " ",
+          PAK: " ",
+          PLW: " ",
+          PSE: " ",
+          PAN: " ",
+          PNG: "Papua New Guinea",
+          PRY: " ",
+          PER: " ",
+          PHL: "Philippines",
+          PCN: " ",
+          POL: " ",
+          PRT: " ",
+          PRI: " ",
+          QAT: " ",
+          COG: " ",
+          REU: " ",
+          ROU: " ",
+          RUS: " ",
+          RWA: " ",
+          BLM: " ",
+          SHN: " ",
+          KNA: " ",
+          LCA: " ",
+          MAF: " ",
+          SPM: " ",
+          VCT: " ",
+          WSM: " ",
+          SMR: " ",
+          STP: " ",
+          SAU: " ",
+          SEN: " ",
+          SRB: " ",
+          SCG: " ",
+          SYC: " ",
+          SLE: " ",
+          SGP: "Singapore",
+          SXM: " ",
+          SVK: " ",
+          SVN: " ",
+          SLB: " ",
+          SOM: " ",
+          ZAF: " ",
+          SGS: " ",
+          KOR: "South Korea",
+          SSD: " ",
+          ESP: " ",
+          LKA: " ",
+          SDN: " ",
+          SUR: " ",
+          SJM: " ",
+          SWZ: " ",
+          SWE: " ",
+          CHE: " ",
+          SYR: " ",
+          TWN: "Taiwan",
+          TJK: " ",
+          TZA: " ",
+          THA: "Thailand",
+          TGO: " ",
+          TKL: " ",
+          TON: " ",
+          TTO: " ",
+          TUN: " ",
+          TUR: " ",
+          TKM: " ",
+          TCA: " ",
+          TUV: " ",
+          VIR: " ",
+          UGA: " ",
+          UKR: " ",
+          ARE: " ",
+          GBR: " ",
+          USA: " ",
+          UMI: " ",
+          URY: " ",
+          UZB: " ",
+          VUT: " ",
+          VAT: " ",
+          VEN: " ",
+          VNM: "Vietnam",
+          WLF: " ",
+          ESH: " ",
+          YEM: " ",
+          ZMB: " ",
+          ZWE: " "
+        }
+      })
+    </script>
+  </body>
+</html>

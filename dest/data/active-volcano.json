@@ -1,0 +1,86 @@
+[
+  {
+      "NameOfVolcano": "Semeru",
+      "Lat": "-8.1",
+      "Lon": "112.92",
+      "Coordinates": "8.1 S, 112.92 E",
+      "DisplayDate": "14 Mar",
+      "DateOfLastEruption": "14 Mar 2023",
+      "TimeOfEruption": "12:00 am (Singapore Time)",
+      "Location": "93 km south-southeast from Surabaya, and 1458 km southeast from Singapore",
+      "IsEruptive": true,
+      "Sequence": 0
+  },
+  {
+      "NameOfVolcano": "Merapi",
+      "Lat": "-7.53",
+      "Lon": "110.45",
+      "Coordinates": "7.53 S, 110.45 E",
+      "DisplayDate": "13 Mar",
+      "DateOfLastEruption": "13 Mar 2023",
+      "TimeOfEruption": "01:59 pm (Singapore Time)",
+      "Location": "33 km north-northeast from Yogyakarta, and 1232 km southeast from Singapore",
+      "IsEruptive": true,
+      "Sequence": 1
+  },
+  {
+      "NameOfVolcano": "Dukono",
+      "Lat": "1.7",
+      "Lon": "127.9",
+      "Coordinates": "1.7 N, 127.9 E",
+      "DisplayDate": "11 Mar",
+      "DateOfLastEruption": "11 Mar 2023",
+      "TimeOfEruption": "12:05 pm (Singapore Time)",
+      "Location": "340 km east from Manado, and 2679 km east from Singapore",
+      "IsEruptive": true,
+      "Sequence": 2
+  },
+  {
+      "NameOfVolcano": "Krakatau",
+      "Lat": "-6.1",
+      "Lon": "105.42",
+      "Coordinates": "6.1 S, 105.42 E",
+      "DisplayDate": "11 Mar",
+      "DateOfLastEruption": "11 Mar 2023",
+      "TimeOfEruption": "10:30 am (Singapore Time)",
+      "Location": "155 km west from Jakarta, and 848 km south-southeast from Singapore",
+      "IsEruptive": true,
+      "Sequence": 3
+  },
+  {
+      "NameOfVolcano": "Ibu",
+      "Lat": "1.48",
+      "Lon": "127.63",
+      "Coordinates": "1.48 N, 127.63 E",
+      "DisplayDate": "10 Mar",
+      "DateOfLastEruption": "10 Mar 2023",
+      "TimeOfEruption": "12:00 pm (Singapore Time)",
+      "Location": "309 km east from Manado, and 2649 km east from Singapore",
+      "IsEruptive": true,
+      "Sequence": 4
+  },
+  {
+      "NameOfVolcano": "Karangetang",
+      "Lat": "2.78",
+      "Lon": "125.4",
+      "Coordinates": "2.78 N, 125.4 E",
+      "DisplayDate": "10 Mar",
+      "DateOfLastEruption": "10 Mar 2023",
+      "TimeOfEruption": "10:00 am (Singapore Time)",
+      "Location": "157 km north-northeast from Manado, and 2405 km east from Singapore",
+      "IsEruptive": true,
+      "Sequence": 5
+  },
+  {
+      "NameOfVolcano": "Kerinci",
+      "Lat": "-1.7",
+      "Lon": "101.27",
+      "Coordinates": "1.7 S, 101.27 E",
+      "DisplayDate": "26 Feb",
+      "DateOfLastEruption": "26 Feb 2023",
+      "TimeOfEruption": "05:50 pm (Singapore Time)",
+      "Location": "245 km south from Pekanbaru, and 441 km southwest from Singapore",
+      "IsEruptive": true,
+      "Sequence": 6
+  }
+]
