@@ -464,3 +464,64 @@
     fill-opacity: 1 !important;
   }
 }
+.regional-info {
+  .regional-info-panel {
+    margin: 1px;
+  }
+  .regional-info-row {
+    display: flex;
+    padding: 0.5rem;
+    background: $nea-green;
+    position: relative;
+    &[data-bs-toggle=collapse] {
+      cursor: pointer;
+    }
+    &.regional-info-header {
+      background: transparent;
+    }
+    span {
+      font-weight: 700;
+      padding: 0.25rem 0.5rem;
+      line-height: 1;
+      &:first-child {
+        flex-basis: 40%;
+      }
+      &.collapse-toggle {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        width: 2em;
+        &::after {
+          content: '+';
+          transition: all .35s;
+        }
+      }
+    }
+    &[aria-expanded=true] {
+      span.collapse-toggle::after {
+        transform: rotate(315deg);
+      }
+    }
+  }
+  .regional-table {
+    font-size: 0.95rem;
+    background: #ecf0f1;
+    margin-bottom: 0;
+    td {
+      padding: 0.5rem 0.75rem;
+    }
+  }
+}
+.no-regional-warning {
+  padding: 1rem 1.5rem;
+  background-color: #ecf0f1;
+  p {
+    margin-bottom: 0;
+    font-size: 1.45rem;
+    line-height: 1.2;
+    font-weight: 500;
+  }
+}
