@@ -124,6 +124,23 @@ main {
   }
 }
 
+.btn {
+  background: $nea-green;
+  font-weight: 500;
+  font-size: 0.8rem;
+  border-radius: 0;
+  &:hover, &:active {
+    background-color: $nea-dark-green;
+    color: black;
+  }
+}
+:not(.btn-check) + .btn {
+  &:active {
+    background-color: $nea-dark-green;
+    border-color: transparent;
+  }
+}
+
 footer {
   background: $nea-blue;
   .footer-container {

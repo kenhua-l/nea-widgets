@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <head>
+    <title>Regional Volcano</title>
+    @@include('../partials/head.html')
+  </head>
+  <body class="d-flex flex-column h-100">
+    @@include('../partials/header.html')
+    <main>
+      <section aria-label="main content">
+        <div class="container">
+          <h1>Regional Volcano</h1>
+          <p>The data shown is a snapshot from 14 March 2023</p>
+          <p><a href="https://www.nea.gov.sg/weather/regional-volcanic-eruptions" target="_blank">Live Widget Location</a></p>
+          
+          <div class="bg-white p-3">
+            <div class="row">
+              <div class="col-12 col-md-7">
+                <div class="map-div" id="regional-volcano" style="position: relative; width: 500px; height:600px"></div>
+                <button class="btn zoom-button" data-zoom="reset" type="button">Reset</button>
+                <button class="btn zoom-button" data-zoom="out" type="button">-</button>
+                <button class="btn zoom-button" data-zoom="in" type="button">+</button>
+              </div>
+              <div class="col-12 col-md-5">
+                <div class="regional-info" id="regional-info"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-md-7">
+                <div class="map-info-label">
+                  <p class="h5">Status of Active Volcanoes</p>
+                  <p><span class="red-circle"></span> Eruptive state with significant emission of ash</p>
+                  <p><span class="purple-circle"></span> Non-eruptive or slightly elevated state</p>
+                </div>
+                <div class="info-box">
+                  <div class="info-icon-box">
+                    <span class="info-icon"></span>
+                  </div>
+                  <p>
+                    The information on volcanic eruptions is obtained from Volcanic Ash Advisory Centres (VAAC) 
+                    for the Asia Pacific Region in Darwin, Australia and Tokyo, Japan. The Centres are designated 
+                    by the International Civil Aviation Organisation.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+        </div>
+      </section>
+    </main>
+    @@include('../partials/footer.html')
+    @@include('../partials/scripts.html')
+    <script src="/js/d3.min.js" type="text/javascript"></script>
+    <script src="/js/topojson.min.js" type="text/javascript"></script>
+    <script src="/js/datamaps.min.js" type="text/javascript"></script>
+    <script>
+
+      // building table and syncing data with map
+      function tableBuilder(datas) {
+        if(datas) {
+          let infoHeader = $('<div class="regional-info-row regional-info-header"><span>Volcano</span><span>Date of Last Eruption</span></div>');
+          $('.regional-info').append(infoHeader);
+
+          for(var i = 0; i < datas.length; i++) {
+            let data = datas[i];
+            let infoPanel = $('<div class="regional-info-panel" data-index="' + i + '"></div>');
+            
+            let infoRow = $('<div class="regional-info-row" data-bs-toggle="collapse" data-bs-target="#' + data.NameOfVolcano + '" aria-expanded="false" aria-controls="' + data.NameOfVolcano + '"></div>');
+            infoRow.append('<span>'+ data.NameOfVolcano + '</span>');
+            infoRow.append('<span>'+ data.DisplayDate + '</span>');
+            infoRow.append('<span class="collapse-toggle"></span>');
+            infoPanel.append(infoRow);            
+
+            let infoCollapse = $('<div class="collapse" id="' + data.NameOfVolcano + '" data-index="' + i + '" data-bs-parent="#regional-info"></div>');
+            let infoTable = $('<table class="table regional-table"></table>');
+            let infoTableBody = $('<tbody></tbody>');
+            infoTableBody.append('<tr><th>Name of Volcano</th><td>' + data.NameOfVolcano + '</td></tr>')
+            infoTableBody.append('<tr><th>Coordinates</th><td>' + data.Coordinates + '</td></tr>')
+            infoTableBody.append('<tr><th>Date of last eruption</th><td>' + data.DateOfLastEruption + '</td></tr>')
+            infoTableBody.append('<tr><th>Time of eruption</th><td>' + data.TimeOfEruption + '</td></tr>')
+            infoTableBody.append('<tr><th>Location</th><td>' + data.Location + '</td></tr>')
+            infoTable.append(infoTableBody);
+            infoCollapse.append(infoTable);
+            infoPanel.append(infoCollapse);
+
+            $('.regional-info').append(infoPanel);
+          }
+          $('.collapse').on('show.bs.collapse', function(e) {
+            let seq = $(e.target).data('index');
+            $('.datamaps-bubble').removeClass('active');
+            $('.datamaps-bubble:nth-child('+(seq+1)+')').addClass('active');
+          });
+        } else {
+          let content = $('<div class="no-regional-warning"><p>There is no volcanic eruption in the region.</p></div>');
+          $('.regional-info').append(content);
+        }
+      }
+
+      function initMap(hasData, volcanoes) {
+        if(hasData) {
+          tableBuilder(volcanoes);
+        } else {
+          tableBuilder();
+        }
+        $('text:contains("Brunei")').attr('y', '263');
+        $('text:contains("Japan")').attr('y', '103');
+        $('text:contains("Taiwan")').attr('y', '170');
+        $('text:contains("Laos")').attr('y', '192');
+        $('text:contains("Myanmar")').attr('y', '180');
+        $('text:contains("Vietnam")').attr('y', '205');
+      }
+
+      function HandleBubbleClick(bubble) {
+        let seq = bubble.Sequence;
+        $('.regional-info-panel[data-index=' + seq + ']').find('.regional-info-row').click();
+      }
+
+      // map zooming
+      function Zoom(args) {
+        $.extend(this, {
+          $buttons: $('.zoom-button'),
+          $info: $('#zoom-info'),
+          scale: { max: 50, currentShift: 0 },
+          $container: args.$container,
+          datamap: args.datamap
+        });
+        this.init();
+      }
+
+      Zoom.prototype.init = function() {
+        var paths = this.datamap.svg.selectAll("path"),
+            subunits = this.datamap.svg.selectAll(".datamaps-subunit");
+        
+        paths.style("vector-effect", "non-scaling-stroke");
+        subunits.call(
+          d3.behavior.drag().on('dragend', function() {
+            d3.event.sourceEvent.stopPropagation();
+          })
+        );
+        
+        this.scale.set = this._getScalesArray();
+        this.d3Zoom = d3.behavior.zoom().scaleExtent([1, this.scale.max]);
+        this._displayPercentage(1);
+        this.listen();
+      }
+
+      Zoom.prototype.listen = function() {
+        this.$buttons.off('click').on('click', this._handleClick.bind(this));
+
+        this.datamap.svg
+          .call(this.d3Zoom.on('zoom', this._handleScroll.bind(this)))
+          .on('dbclick.zoom', null);
+        var wheelzoom = this.datamap.svg.on('wheel.zoom');
+        this.datamap.svg.on('wheel.zoom', function() {
+          if(d3.event.ctrlKey) {
+            wheelzoom.call(this);
+            d3.event.preventDefault();
+            d3.event.stopImmediatePropagation();
+          }
+        })    
+      }
+
+      Zoom.prototype.reset = function() {
+        this._shift('reset');
+      }
+
+      Zoom.prototype._handleScroll = function() {
+        var translate = d3.event.translate;
+        var scale = d3.event.scale;
+        var limited = this._bound(translate, scale);
+
+        this.scrolled = true;
+        this._update(limited.translate, limited.scale);
+      }
+
+      Zoom.prototype._handleClick = function(e) {
+        var direction = $(e.target).data('zoom');
+        this._shift(direction);
+      }
+
+      Zoom.prototype._shift = function(direction) {
+        var center = [this.$container.width() / 2, this.$container.height() / 2];
+        var translate = this.d3Zoom.translate();
+        var translate0 = [];
+        var l = [];
+        var view = {
+          x: translate[0],
+          y: translate[1],
+          k: this.d3Zoom.scale()
+        };
+        var bounded;
+
+        translate0 = [
+          (center[0] - view.x) / view.k,
+          (center[1] - view.y) / view.k
+        ];
+
+        if(direction == 'reset') {
+          view.k = 1;
+          this.scrolled = true;
+        } else {
+          view.k = this._getNextScale(direction);
+        }
+
+        l = [translate0[0] * view.k + view.x, translate0[1] * view.k + view.y];
+        view.x += center[0] - l[0];
+        view.y += center[1] - l[1];
+        bounded = this._bound([view.x, view.y], view.k);
+        this._animate(bounded.translate, bounded.scale);
+      }
+
+      Zoom.prototype._bound = function(translate, scale) {
+        var width = this.$container.width();
+        var height = this.$container.height();
+
+        translate[0] = Math.min((width / height) * (scale - 1), Math.max(width * (1 - scale), translate[0]));
+        translate[1] = Math.min(0, Math.max(height * (1 - scale), translate[1]));
+        return { translate: translate, scale: scale };
+      }
+
+      Zoom.prototype._update = function(translate, scale) {
+        this.d3Zoom.translate(translate).scale(scale);
+        this.datamap.svg.selectAll('g')
+          .attr('transform', 'translate(' + translate + ')scale(' + scale + ')');
+        this.datamap.svg.selectAll('.datamaps-bubble')
+          .attr('r', 8 / scale).style('stroke-width', 1 / scale);
+        var fontSize = 10 / scale;
+        if(scale > 6) {
+          fontSize = 0
+        }
+        this.datamap.svg.selectAll('text').style('font-size', fontSize);
+        this._displayPercentage(scale);
+      }
+
+      Zoom.prototype._animate = function(translate, scale) {
+        var _this = this;
+        var d3Zoom = this.d3Zoom;
+
+        d3.transition().duration(350).tween('zoom', function() {
+          var iTranslate = d3.interpolate(d3Zoom.translate(), translate);
+          var iScale = d3.interpolate(d3Zoom.scale(), scale);
+          return function(t) {
+            _this._update(iTranslate(t), iScale(t));
+          }
+        })
+      }
+
+      Zoom.prototype._displayPercentage = function(scale) {
+        var value;
+        value = Math.round(Math.log(scale) / Math.log(this.scale.max) *  100);
+        this.$info.text(value + '%');
+      }
+
+      Zoom.prototype._getScalesArray = function() {
+        var array = [];
+        var scaleMaxLog = Math.log(this.scale.max);
+        for(var i=0; i<=10; i++) {
+          array.push(Math.pow(Math.E, 0.1*i*scaleMaxLog));
+        }
+        return array;
+      }
+
+      Zoom.prototype._getNextScale = function(direction) {
+        var scaleSet = this.scale.set;
+        var currentScale = this.d3Zoom.scale();
+        var lastShift = scaleSet.length - 1;
+        var shirt;
+        var temp = [];
+        
+        if(this.scrolled) {
+          for(shift = 0; shift <= lastShift; shift++) {
+            temp.push(Math.abs(scaleSet[shift] - currentScale));
+          }
+          shift = temp.indexOf(Math.min.apply(null, temp));
+          if(currentScale >= scaleSet[shift] && shift < lastShift) {
+            shift++;
+          }
+          if(direction == 'out' && shift > 0) {
+            shift--;
+          }
+          this.scrolled = false;
+        } else {
+          shift = this.scale.currentShift;
+          if(direction == 'out') {
+            shift > 0 && shift--;
+          } else {
+            shift < lastShift && shift++;
+          }
+        }
+        this.scale.currentShift = shift;
+        return scaleSet[shift];
+      }
+
+      // map set up related
+      let center = [135, -3];
+      let scale = 280;
+      let $container = $('#regional-volcano');
+      var map = new Datamaps({
+        scope: 'world',
+        element: $container.get(0),
+        setProjection: function(elem) {
+          var projection = d3.geo.equirectangular()
+            .center(center)
+            .scale(scale)
+            .translate([elem.offsetWidth / 2, elem.offsetHeight / 2]);
+          var path = d3.geo.path().projection(projection);
+          return {
+            path: path,
+            projection: projection
+          }
+        },
+        geographyConfig: {
+          dataUrl: null,
+          hideAntarctica: true,
+          borderWidth: 1,
+          borderOpacity: 1,
+          borderColor: '#fdfdfd',
+          popupOnHover: false,
+          highlightOnHover: false,
+          highlightFillColor: '#3250a8',
+          highlightBorderColor: 'rgba(250, 15, 160, 0.2)',
+          highlightBorderWidth: 2,
+          highlightBorderOpacity: 1
+        },
+        fills: {
+          defaultFill: "#c9c9c9",
+          pnt: "#000000"
+        }, 
+        done: function(elem) {
+          zoom = new Zoom({
+            $container: $container,
+            datamap: elem
+          });
+          setTimeout(function() {
+            this.zoom.reset()
+          }, 500);
+        }
+      })
+
+
+      $.getJSON('/data/active-volcano.json', function(volcanoes) {
+        volcanoes.map(function(volcano) {
+          volcano.longitude = volcano.Lon,
+          volcano.latitude = volcano.Lat,
+          volcano.radius = 8,
+          volcano.fillKey = 'pnt'
+        });
+        map.bubbles(volcanoes, {
+          borderWidth: 1,
+          popupOnHover: false,
+          highlightOnHover: false
+        });
+        d3.selectAll('.datamaps-bubble').style('fill', function(volcano) {
+          return volcano.IsEruptive ? 'red' : 'purple';
+        });
+        d3.selectAll('.datamaps-bubble').on('click', function(volcano) {
+          let isActive = d3.select(this).classed('active');
+          d3.selectAll('.datamaps-bubble').classed('active', false);
+          d3.select(this).classed('active', !isActive);
+          window.HandleBubbleClick(volcano);
+        });
+        if(volcanoes && volcanoes.length) {
+          initMap(true, volcanoes);
+        } else {
+          initMap(false, null);
+        }
+      });
+
+      map.labels({
+        customLabelText: {
+          AFG: " ",
+          ALA: " ",
+          ALB: " ",
+          DZA: " ",
+          ASM: " ",
+          AND: " ",
+          AGO: " ",
+          AIA: " ",
+          ATA: " ",
+          ATG: " ",
+          ARG: " ",
+          ARM: " ",
+          ABW: " ",
+          AUS: "Australia",
+          AUT: " ",
+          AZE: " ",
+          BHS: " ",
+          BHR: " ",
+          BGD: " ",
+          BRB: " ",
+          BLR: " ",
+          BEL: " ",
+          BLZ: " ",
+          BEN: " ",
+          BMU: " ",
+          BTN: " ",
+          BOL: " ",
+          BES: " ",
+          BIH: " ",
+          BWA: " ",
+          BVT: " ",
+          BRA: " ",
+          IOT: " ",
+          VGB: " ",
+          BRN: "Brunei",
+          BGR: " ",
+          BFA: " ",
+          BDI: " ",
+          KHM: "Cambodia",
+          CMR: " ",
+          CAN: " ",
+          CPV: " ",
+          CYM: " ",
+          CAF: " ",
+          TCD: " ",
+          CHL: " ",
+          CHN: "China",
+          CXR: " ",
+          CCK: " ",
+          COL: " ",
+          COM: " ",
+          COK: " ",
+          CRI: " ",
+          HRV: " ",
+          CUB: " ",
+          CUW: " ",
+          CYP: " ",
+          CZE: " ",
+          COD: " ",
+          DNK: " ",
+          DJI: " ",
+          DMA: " ",
+          DOM: " ",
+          TLS: " ",
+          ECU: " ",
+          EGY: " ",
+          SLV: " ",
+          GNQ: " ",
+          ERI: " ",
+          EST: " ",
+          ETH: " ",
+          FLK: " ",
+          FRO: " ",
+          FJI: " ",
+          FIN: " ",
+          FRA: " ",
+          GUF: " ",
+          PYF: " ",
+          ATF: " ",
+          GAB: " ",
+          GMB: " ",
+          GEO: " ",
+          DEU: " ",
+          GHA: " ",
+          GIB: " ",
+          GRC: " ",
+          GRL: " ",
+          GRD: " ",
+          GLP: " ",
+          GUM: " ",
+          GTM: " ",
+          GGY: " ",
+          GIN: " ",
+          GNB: " ",
+          GUY: " ",
+          HTI: " ",
+          HMD: " ",
+          HND: " ",
+          HKG: "Hong Kong",
+          HUN: " ",
+          ISL: " ",
+          IND: " ",
+          IDN: "Indonesia",
+          IRN: " ",
+          IRQ: " ",
+          IRL: " ",
+          IMN: " ",
+          ISR: " ",
+          ITA: " ",
+          CIV: " ",
+          JAM: " ",
+          JPN: "Japan",
+          JEY: " ",
+          JOR: " ",
+          KAZ: " ",
+          KEN: " ",
+          KIR: " ",
+          XKX: " ",
+          KWT: " ",
+          KGZ: " ",
+          LAO: "Laos",
+          LVA: " ",
+          LBN: " ",
+          LSO: " ",
+          LBR: " ",
+          LBY: " ",
+          LIE: " ",
+          LTU: " ",
+          LUX: " ",
+          MAC: " ",
+          MKD: " ",
+          MDG: " ",
+          MWI: " ",
+          MYS: "Malaysia",
+          MDV: " ",
+          MLI: " ",
+          MLT: " ",
+          MHL: " ",
+          MTQ: " ",
+          MRT: " ",
+          MUS: " ",
+          MYT: " ",
+          MEX: " ",
+          FSM: " ",
+          MDA: " ",
+          MCO: " ",
+          MNG: " ",
+          MNE: " ",
+          MSR: " ",
+          MAR: " ",
+          MOZ: " ",
+          MMR: "Myanmar",
+          NAM: " ",
+          NRU: " ",
+          NPL: " ",
+          NLD: " ",
+          ANT: " ",
+          NCL: " ",
+          NZL: "New Zealand",
+          NIC: " ",
+          NER: " ",
+          NGA: " ",
+          NIU: " ",
+          NFK: " ",
+          PRK: "North Korea",
+          MNP: " ",
+          NOR: " ",
+          OMN: " ",
+          PAK: " ",
+          PLW: " ",
+          PSE: " ",
+          PAN: " ",
+          PNG: "Papua New Guinea",
+          PRY: " ",
+          PER: " ",
+          PHL: "Philippines",
+          PCN: " ",
+          POL: " ",
+          PRT: " ",
+          PRI: " ",
+          QAT: " ",
+          COG: " ",
+          REU: " ",
+          ROU: " ",
+          RUS: " ",
+          RWA: " ",
+          BLM: " ",
+          SHN: " ",
+          KNA: " ",
+          LCA: " ",
+          MAF: " ",
+          SPM: " ",
+          VCT: " ",
+          WSM: " ",
+          SMR: " ",
+          STP: " ",
+          SAU: " ",
+          SEN: " ",
+          SRB: " ",
+          SCG: " ",
+          SYC: " ",
+          SLE: " ",
+          SGP: "Singapore",
+          SXM: " ",
+          SVK: " ",
+          SVN: " ",
+          SLB: " ",
+          SOM: " ",
+          ZAF: " ",
+          SGS: " ",
+          KOR: "South Korea",
+          SSD: " ",
+          ESP: " ",
+          LKA: " ",
+          SDN: " ",
+          SUR: " ",
+          SJM: " ",
+          SWZ: " ",
+          SWE: " ",
+          CHE: " ",
+          SYR: " ",
+          TWN: "Taiwan",
+          TJK: " ",
+          TZA: " ",
+          THA: "Thailand",
+          TGO: " ",
+          TKL: " ",
+          TON: " ",
+          TTO: " ",
+          TUN: " ",
+          TUR: " ",
+          TKM: " ",
+          TCA: " ",
+          TUV: " ",
+          VIR: " ",
+          UGA: " ",
+          UKR: " ",
+          ARE: " ",
+          GBR: " ",
+          USA: " ",
+          UMI: " ",
+          URY: " ",
+          UZB: " ",
+          VUT: " ",
+          VAT: " ",
+          VEN: " ",
+          VNM: "Vietnam",
+          WLF: " ",
+          ESH: " ",
+          YEM: " ",
+          ZMB: " ",
+          ZWE: " "
+        }
+      })
+    </script>
+  </body>
+</html>
