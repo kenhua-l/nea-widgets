@@ -13,14 +13,39 @@
           <p>The data shown is a snapshot from 8 March 2023</p>
           <p><a href="https://www.nea.gov.sg/weather/rain-areas" target="_blank">Live Widget Location</a></p>
 
-          <div class="bg-white p-3">
+          <div class="bg-white p-4">
             <div class="row">
               <div class="col-12">
                 <div class="slider-container"></div>
 
                 <div class="rain-area-map">
+                  <img src="/img/rain-area/base-map.png" alt="base map" />
+                  <img />
+                  <img class="overlay" src="/img/rain-area/landmarks.png" alt="landmarks map" id="landmarkMap" />
+                  <img class="overlay" src="/img/rain-area/township.png" alt="hdb towns map" id="hdbMap" />
+                  <img class="overlay" src="/img/rain-area/mrt.png" alt="mrt stations map" id="mrtMap" />
+                  <img class="overlay" src="/img/rain-area/expressway.png" alt="expressways map" id="expresswayMap" />
                 </div>
 
+                <div class="overlay-select">
+                  <p class="mb-2">Select Overlay</p>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="checkLandmarks" value="landmark">
+                    <label class="form-check-label" for="checkLandmarks">Landmark</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="checkTownships" value="townships">
+                    <label class="form-check-label" for="checkTownships">HDB Town</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="checkMrt" value="mrt">
+                    <label class="form-check-label" for="checkMrt">MRT Station</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="checkExpressway" value="expressway">
+                    <label class="form-check-label" for="checkExpressway">Expressway</label>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -152,6 +177,39 @@
         element: $('.slider-container'),
         values: ['1', '2', '3', '4', '5', '6', '7', '10', '12', '20']
       });
+
+
+      $(function() {
+        // overlay checkboxes
+        $('#checkLandmarks').on('change', function() {
+          if($(this).prop('checked')) {
+            $('#landmarkMap').show();
+          } else {
+            $('#landmarkMap').hide();
+          }
+        });
+        $('#checkTownships').on('change', function() {
+          if($(this).prop('checked')) {
+            $('#hdbMap').show();
+          } else {
+            $('#hdbMap').hide();
+          }
+        });
+        $('#checkMrt').on('change', function() {
+          if($(this).prop('checked')) {
+            $('#mrtMap').show();
+          } else {
+            $('#mrtMap').hide();
+          }
+        });
+        $('#checkExpressway').on('change', function() {
+          if($(this).prop('checked')) {
+            $('#expresswayMap').show();
+          } else {
+            $('#expresswayMap').hide();
+          }
+        });
+      })
     </script>
   </body>
 </html>
