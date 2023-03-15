@@ -16,31 +16,7 @@
           <div class="bg-white p-3">
             <div class="row">
               <div class="col-12">
-                <div class="slider-container">
-                  <div class="slider-button-container">
-                    <button class="slider-button" type="button" id="animation-button">
-                      <span class="slider-play"></span>
-                    </button>
-                  </div>
-                  <div class="slider">
-                    <div class="slider-progress">
-                      <div class="slider-bob"></div>
-                    </div>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                </div>
+                <div class="slider-container"></div>
 
                 <div class="rain-area-map">
                 </div>
@@ -53,5 +29,129 @@
     </main>
     @@include('../partials/footer.html')
     @@include('../partials/scripts.html')
+    <script>
+      // work with slider logic
+      function Slider(args) {
+        $.extend(this, {
+          $this: args.element,
+          numberOfSteps: args.values.length,
+          values: args.values
+        });
+        this.init();
+      }
+
+      Slider.prototype.init = function() {
+        // init the play button
+        let buttonContainer = $('<div class="slider-button-container"></div>');
+        let $button = $('<button class="slider-button" type="button" id="animation-button"></button>');
+        this.$button = $button;
+        $button.append('<span class="slider-play"></span>');
+        buttonContainer.append($button);
+        this.$this.append(buttonContainer);
+        this.isPlaying = false;
+        this.playing;
+
+        // init the slider
+        let $slider = $('<div class="slider"></div>');
+        let $bob = $('<div class="slider-bob"><span class="bob-tooltip">1243</span></div>');
+        let $progress = $('<div class="slider-progress"></div>');
+        $progress.append($bob);
+        $slider.append('<p class="slider-first-marker">' + this.values[0] + '</p>')
+        $slider.append($progress);
+        $slider.append('<p class="slider-last-marker">' + this.values[this.values.length - 1] + '</p>')
+        this.$bob = $bob;
+        this.$progress = $progress;
+        for(let i=0; i<this.numberOfSteps; i++) {
+          $slider.append('<span class="marker" data-marker="' + i + '" style="padding: 0 calc(100%/' + (this.numberOfSteps * 2) + ')"></span>');
+        }
+        this.$this.append($slider);
+        this.snapTo(0);
+
+        var outerThis = this;
+        $(window).on('load resize orientationchange', function() {
+          outerThis.listen();
+        });
+      }
+      
+      Slider.prototype.listen = function() {
+        // click on marker
+        this.$this.find('.marker').off('click').on('click', this._handleSnap.bind(this));
+
+        // drag on marker
+        // get the array of markers first.
+        var xStart = this.$this.offset().left;
+        var xEnd = xStart + this.$this.width();
+        var markerPositions = [xStart];
+        var gap = (xEnd - xStart) / (this.numberOfSteps - 1); 
+        while(xStart < xEnd) {
+          markerPositions.push(xStart+=gap);
+        }
+        // set up mouse down
+        var bobDrag = false;
+        var bobDragX = 0;
+        this.$bob.on('mousedown', function(e) {
+          bobDrag = true;
+          bobDragX = e.pageX;
+        });
+        // action when drag
+        var outerThis = this;
+        $(document).on('mousemove', function(e) {
+          if(bobDrag) {
+            if(e.pageX <= markerPositions[0] + (gap/2)) {
+              outerThis.snapTo(0);
+            } else if(e.pageX >= markerPositions[markerPositions.length-1] - (gap/2)) {
+              outerThis.snapTo(markerPositions.length-1);
+            } else {
+              for(let m = 1; m < markerPositions.length; m++) {
+                if(e.pageX >= (markerPositions[m] - (gap/2)) && e.pageX <= (markerPositions[m] + (gap/2))) {
+                  outerThis.snapTo(m);
+                  break;
+                }
+              }
+            }
+          }
+        }).on('mouseup', function(e) {
+          bobDrag = false;
+        });
+
+        // button play pause
+        this.$button.off('click').on('click', this._handlePlay.bind(this));
+      }
+
+      Slider.prototype._handleSnap = function(e) {
+        let $marker = $(e.target);
+        let markerNumber = $marker.data('marker');
+        this.snapTo(markerNumber);
+      }
+
+      Slider.prototype._handlePlay = function(e) {
+        this.isPlaying = !this.isPlaying;
+        var marker = this.currentMark + 1;
+        var outerThis = this;
+        if(this.isPlaying) {
+          this.$button.children('span').addClass('slider-stop').removeClass('slider-play');
+          this.playing = setInterval(function() {
+            if(marker > outerThis.numberOfSteps - 1) {
+              marker = 0;
+            }
+            outerThis.snapTo(marker++)
+          }, 1000);
+        } else {
+          clearInterval(this.playing);
+          this.$button.children('span').addClass('slider-play').removeClass('slider-stop');
+        }
+      }
+
+      Slider.prototype.snapTo = function(marker) {
+        this.currentMark = marker;
+        this.$progress.css('width', (100 / (this.numberOfSteps - 1) * marker) + '%');
+        this.$bob.find('.bob-tooltip').html(this.values[marker]);
+      }
+
+      var slider = new Slider({
+        element: $('.slider-container'),
+        values: ['1', '2', '3', '4', '5', '6', '7', '10', '12', '20']
+      });
+    </script>
   </body>
 </html>
