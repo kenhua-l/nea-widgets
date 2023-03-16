@@ -405,6 +405,9 @@
           line-height: 1.2;
           padding: 0.25rem 0.5rem;
           border-radius: 8px;
+          left: 50%;
+          transform: translate(-50%, 0);
+          white-space: nowrap;
         }
         &::after{
           content: '';
@@ -458,6 +461,9 @@
     left: 0;
     opacity: 0.5;
     display: none;
+    &.rainmap {
+      display: block;
+    }
   }
 }
 

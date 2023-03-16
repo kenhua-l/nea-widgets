@@ -20,7 +20,7 @@
 
                 <div class="rain-area-map">
                   <img src="/img/rain-area/base-map.png" alt="base map" />
-                  <img />
+                  <img class="overlay rainmap" src="#" alt="rain intensity map" id="rainIntensity" />
                   <img class="overlay" src="/img/rain-area/landmarks.png" alt="landmarks map" id="landmarkMap" />
                   <img class="overlay" src="/img/rain-area/township.png" alt="hdb towns map" id="hdbMap" />
                   <img class="overlay" src="/img/rain-area/mrt.png" alt="mrt stations map" id="mrtMap" />
@@ -78,7 +78,7 @@
 
         // init the slider
         let $slider = $('<div class="slider"></div>');
-        let $bob = $('<div class="slider-bob"><span class="bob-tooltip">1243</span></div>');
+        let $bob = $('<div class="slider-bob"><span class="bob-tooltip"></span></div>');
         let $progress = $('<div class="slider-progress"></div>');
         $progress.append($bob);
         $slider.append('<p class="slider-first-marker">' + this.values[0] + '</p>')
@@ -93,7 +93,8 @@
         this.snapTo(0);
 
         var outerThis = this;
-        $(window).on('load resize orientationchange', function() {
+        outerThis.listen();
+        $(window).on('resize orientationchange', function() {
           outerThis.listen();
         });
       }
@@ -108,8 +109,11 @@
         var xEnd = xStart + this.$this.width();
         var markerPositions = [xStart];
         var gap = (xEnd - xStart) / (this.numberOfSteps - 1); 
-        while(xStart < xEnd) {
+        while(xStart <= xEnd) {
           markerPositions.push(xStart+=gap);
+        }
+        if(markerPositions[markerPositions.length - 1] > xEnd) {
+          markerPositions.pop();
         }
         // set up mouse down
         var bobDrag = false;
@@ -125,7 +129,7 @@
             if(e.pageX <= markerPositions[0] + (gap/2)) {
               outerThis.snapTo(0);
             } else if(e.pageX >= markerPositions[markerPositions.length-1] - (gap/2)) {
-              outerThis.snapTo(markerPositions.length-1);
+              outerThis.snapTo(markerPositions.length - 1);
             } else {
               for(let m = 1; m < markerPositions.length; m++) {
                 if(e.pageX >= (markerPositions[m] - (gap/2)) && e.pageX <= (markerPositions[m] + (gap/2))) {
@@ -171,15 +175,29 @@
         this.currentMark = marker;
         this.$progress.css('width', (100 / (this.numberOfSteps - 1) * marker) + '%');
         this.$bob.find('.bob-tooltip').html(this.values[marker]);
+        this.$this.data('current-mark', marker);
+        this.$this.trigger('change');
       }
 
-      var slider = new Slider({
-        element: $('.slider-container'),
-        values: ['1', '2', '3', '4', '5', '6', '7', '10', '12', '20']
-      });
-
-
       $(function() {
+        // init slider
+        $.getJSON('/data/rain-area.json', function(data) {
+          var timings = data.map(function(d) {
+            return d.DateTime;
+          });
+          var slider = new Slider({
+            element: $('.slider-container'),
+            values: timings
+          });
+
+          // first map
+          $('#rainIntensity').attr('src', data[0].Url);
+          $('.slider-container').on('change', function(e) {
+            let value = $(e.target).data('current-mark');
+            $('#rainIntensity').attr('src', data[value].Url);
+          });
+        });
+      
         // overlay checkboxes
         $('#checkLandmarks').on('change', function() {
           if($(this).prop('checked')) {
